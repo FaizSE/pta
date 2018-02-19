@@ -16,9 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from uploadcsv import views
+from homepage import views
 
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
+    url(r'^$', views.homepage, name='homepage'),
+    url(r'^uploadcsv', views.uploadcsv, name='uploadcsv'),
     url(r'^admin/', admin.site.urls),
 ]

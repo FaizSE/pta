@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Upload CSV File</title>
-  </head>
-  <body>
+{% extends 'base.html' %}
+
+{% block title %}
+    Upload a File
+{% endblock %}
+
+{% block content %}
 <div class="form-group">
 
     <div class="col-md-8">
@@ -17,5 +17,5 @@
          <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
     </div>
 </div>
-  </body>
-</html>
+{% endblock %}
+
