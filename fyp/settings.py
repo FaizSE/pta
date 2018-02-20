@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'homepage',
     'uploadcsv',
     'accounts',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
