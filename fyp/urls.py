@@ -17,9 +17,10 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from homepage import views
-
+from accounts import views as accounts_views
 urlpatterns = [
     url(r'^$', views.homepage, name='homepage'),
+    url(r'^signup/$', accounts_views.signup, name='signup'),
     url(r'^uploadcsv', views.uploadcsv, name='uploadcsv'),
     url(r'^admin/', admin.site.urls),
 ]
