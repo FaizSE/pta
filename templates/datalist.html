@@ -1,19 +1,37 @@
-{% extends 'base.html' %}
-
-{% block title %}
-    List of Data
-{% endblock %}
-
-{% block header %}
-<br>
-<h1>List of Data</h1>
-{% endblock %}
-
-{% block breadcrumb %}
-    <ol>
-    {% for file in files %}
-           <li>{{ file.name }}
-    {% endfor %}
-    </ol>
-{% endblock %}
-
+{% load static %}<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>List of Data</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <ol class="breadcrumb my-4">
+        <li class="breadcrumb-item active">List of Data</li>
+      </ol>
+      <table class="table">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Date Created</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for file in files %}
+            <tr>
+              <td>
+                {{ file.name }}
+                <small class="text-muted d-block"></small>
+              </td>
+              <td class="align-middle">{{ file.description }}</td>
+              <td class="align-middle">{{ file.created_at }}</td>
+              <td></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
