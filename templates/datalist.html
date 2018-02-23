@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    List of Data
+{% endblock %}
+
+{% block header %}
+<br>
+<h1>List of Data</h1>
+{% endblock %}
+
+{% block breadcrumb %}
+    <ol>
+    {% for file in files %}
+           <li>{{ file.name }}
+    {% endfor %}
+    </ol>
+{% endblock %}
+

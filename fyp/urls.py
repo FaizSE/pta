@@ -18,9 +18,13 @@ from django.contrib import admin
 
 from homepage import views
 from accounts import views as accounts_views
+from datalist import views as datalist_views
+from uploadcsv import views as uploadcsv_views
+
 urlpatterns = [
     url(r'^$', views.homepage, name='homepage'),
     url(r'^signup/$', accounts_views.signup, name='signup'),
-    url(r'^uploadcsv', views.uploadcsv, name='uploadcsv'),
+    url(r'^uploadcsv', uploadcsv_views.uploadcsv, name='uploadcsv'),
+    url(r'^datalist', datalist_views.datalist, name='datalist'),
     url(r'^admin/', admin.site.urls),
 ]

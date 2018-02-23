@@ -14,11 +14,13 @@
         <div class="container">
             <a class="navbar-brand" href="{% url 'homepage' %}"><i class="icon-search"></i>Home</a>
             <a class="navbar-brand" href="{% url 'uploadcsv' %}">Upload New Data</a>
-            <a class="navbar-brand" href="#">List of Data</a>
+            <a class="navbar-brand" href="{% url 'datalist' %}">List of Data</a>
             <a class="navbar-brand" href="{% url 'signup' %}">Sign Up</a>
         </div>
       </nav>
       <div class="container">
+        {% block header %}
+        {% endblock %}
         <ol class="breadcrumb my-4">
           {% block breadcrumb %}
           {% endblock %}
