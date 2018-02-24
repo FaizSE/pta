@@ -7,9 +7,22 @@
 {% endblock %}
 
 {% block content %}
+<table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Time Uploaded</th>
+      </tr>
+    </thead>
+    <tbody>
 {% for file in files %}
-                {{ file.name }}
-                {{ file.description }}
-                {{ file.created_at }}<br>
+    <tr>
+        <td><a href ="{% url 'openfile' pk=file.id %}">{{ file.name }}</a></td>
+        <td>{{ file.description }}</td>
+        <td>{{ file.created_at }}</td>
+    </tr>
 {% endfor %}
+</tbody>
+</table>
 {% endblock %}

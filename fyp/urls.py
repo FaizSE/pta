@@ -24,7 +24,7 @@ from uploadcsv import views as uploadcsv_views
 urlpatterns = [
     url(r'^$', views.homepage, name='homepage'),
     url(r'^signup/$', accounts_views.signup, name='signup'),
-    url(r'^uploadcsv/(?P<pk>\d+)/$', uploadcsv_views.uploadcsv, name='uploadcsv'),
+    url(r'^openfile/(?P<pk>\d+)/$', uploadcsv_views.uploadcsv, name='openfile'),
     url(r'^uploadcsv/new/$', uploadcsv_views.newcsv, name='newcsv'),
     url(r'^datalist', datalist_views.datalist, name='datalist'),
     url(r'^admin/', admin.site.urls),
