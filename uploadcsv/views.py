@@ -6,8 +6,7 @@ def uploadcsv(request, pk):
     file = get_object_or_404(File, pk=pk)
     return render(request, 'uploadcsv.html', {'file': file})
 
-def newcsv(request, pk):
-    file = get_object_or_404(File, pk=pk)
+def newcsv(request):
     if request.method == 'POST':
         name = request.POST['name']
         description = request.POST['description']
@@ -16,4 +15,4 @@ def newcsv(request, pk):
             name=name,
             description=description
         )
-    return render(request, 'newcsv.html', {'file': file})
+    return render(request, 'newcsv.html')
