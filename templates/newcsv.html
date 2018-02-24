@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}New File{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active">New csv</li>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="id_subject">Name</label>
+      <input type="text" class="form-control" id="id_subject" name="name">
+    </div>
+    <div class="form-group">
+      <label for="id_message">Description</label>
+      <textarea class="form-control" id="id_message" name="description" rows="5"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Post</button>
+  </form>
+{% endblock %}
