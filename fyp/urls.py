@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 
 from homepage import views
 from accounts import views as accounts_views
@@ -28,4 +30,4 @@ urlpatterns = [
     url(r'^uploadcsv/new/$', uploadcsv_views.newcsv, name='newcsv'),
     url(r'^datalist', datalist_views.datalist, name='datalist'),
     url(r'^admin/', admin.site.urls),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
