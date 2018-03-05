@@ -4,12 +4,9 @@
 
 {% block breadcrumb %}
   <li class="breadcrumb-item active">Opening</li>
-{{loaded_data | safe}}
+
 {% endblock %}
 
 {% block content %}
-hlhkjljkl
-    {% load render_table from django_tables2 %}
-{% render_table df_table %}
-asdasdasdads
+{{loaded_data | safe}}
 {% endblock %}

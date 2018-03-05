@@ -8,8 +8,8 @@ import pandas as pd
 
 def opencsv(request):
     data = pd.read_csv('C:/Users/Faiz/Documents/fyp/media/csv_file/2015_FTSM_PTA.csv', encoding = "ISO-8859-1")
-    df_table = Table(data.to_dict(orient='list'))
-    context = {'df_table': df_table}
+    data_html = data.to_html()
+    context = {'loaded_data': data_html}
     return render(request, 'opencsv.html', context)
 
 def newcsv(request):
