@@ -10,8 +10,11 @@ def viewcsv(request, pk):
     file = get_object_or_404(File, pk=pk)
     return render(request, 'viewcsv.html', {'file': file})
 
-def opencsv(request):
-    csvfile=settings.MEDIA_ROOT + '/' + 'csv_file/ford_escort.csv'
+def opencsv(request, pk):
+
+    mperson = get_object_or_404(File, pk=pk).name
+
+    csvfile=settings.MEDIA_ROOT + '/' + mperson
     data = pd.read_csv(csvfile, encoding = "ISO-8859-1")
     data_html = data.to_html()
     context = {'loaded_data': data_html}
