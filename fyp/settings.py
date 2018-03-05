@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'uploadcsv',
     'accounts',
     'widget_tweaks',
+    'django_tables2',
+    'pandas'
 ]
 
 MIDDLEWARE = [
@@ -113,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kuala_Lumpur'
 
 USE_I18N = True
 
