@@ -2,12 +2,17 @@ from django.shortcuts import render, get_object_or_404
 from .models import File, UploadForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django_tables2.tables import Table
+from django.conf import settings
 import pandas as pd
 
 
+def viewcsv(request, pk):
+    file = get_object_or_404(File, pk=pk)
+    return render(request, 'viewcsv.html', {'file': file})
+
 def opencsv(request):
-    data = pd.read_csv('C:/Users/Faiz/Documents/fyp/media/csv_file/2015_FTSM_PTA.csv', encoding = "ISO-8859-1")
+    csvfile=settings.MEDIA_ROOT + '/' + 'csv_file/ford_escort.csv'
+    data = pd.read_csv(csvfile, encoding = "ISO-8859-1")
     data_html = data.to_html()
     context = {'loaded_data': data_html}
     return render(request, 'opencsv.html', context)
