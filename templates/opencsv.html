@@ -9,9 +9,13 @@
 
 {% block content %}
 <h2>Data Info:</h2>
+
 {% for x in data_info %}
-    {{ x }}
+    {{ x | safe }}
 {% endfor %}
-<br>
+
 {{loaded_data | safe}}
+<br/>
+<a href="{% url 'dropna' %}"><button>Drop missing data</button></a>
+
 {% endblock %}

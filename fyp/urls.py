@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^$', views.homepage, name='homepage'),
     url(r'^signup/$', accounts_views.signup, name='signup'),
     url(r'^opencsv/(?P<pk>\d+)/$', uploadcsv_views.opencsv, name='opencsv'),
+    url(r'^opencsv/dropna/$', uploadcsv_views.dropna, name='dropna'),
     url(r'^uploadcsv/new/$', uploadcsv_views.newcsv, name='newcsv'),
     url(r'^datalist/(?P<pk>\d+)/$', uploadcsv_views.viewcsv, name='viewcsv'),
     url(r'^datalist', datalist_views.datalist, name='datalist'),
