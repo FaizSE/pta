@@ -16,6 +16,13 @@
 
 {{loaded_data | safe}}
 <br/>
-<a href="{% url 'dropna' %}"><button>Drop missing data</button></a>
+<form action="" method="post">
+    {% csrf_token %}
+
+    <input type="submit" name = "dropna" value="Drop Row with No Data"/><br/>
+    Column Name: <input type="text" name="index">
+    <input type="submit" name = "strip" value="Remove Whitespace"/>
+
+</form>
 
 {% endblock %}
