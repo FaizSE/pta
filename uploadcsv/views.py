@@ -6,8 +6,6 @@ from django.conf import settings
 import pandas as pd
 import io
 
-
-
 def viewcsv(request, pk):
     file = get_object_or_404(File, pk=pk)
     return render(request, 'viewcsv.html', {'file': file})
@@ -18,20 +16,30 @@ def opencsv(request, pk):
     data = pd.read_csv(csvfile, encoding = "ISO-8859-1")
     pd.set_option('display.max_colwidth', -1)
 
-    if 'dropna' in request.POST:
-        data = data.dropna(how='all')
-        data.to_csv(csvfile, encoding="ISO-8859-1", index=False)
-    elif 'strip' in request.POST:
-        index = request.POST['index']
-        data[index]=data[index].str.strip()
+    def overwritedata():
         data.to_csv(csvfile, encoding="ISO-8859-1",index=False)
 
+    if 'dropna' in request.POST:#Remove empty data
+        data = data.dropna(how='all')
+        overwritedata()
+    elif 'strip' in request.POST:#Remove trailing whitespace
+        index = request.POST['index']
+        data[index]=data[index].str.strip()
+        overwritedata()
+    elif 'renamecol' in request.POST:#Remove trailing whitespace
+        oldcol = request.POST['oldcol']
+        newcol = request.POST['newcol']
+        data=data.rename(columns={oldcol:newcol})
+        overwritedata()
 
-    def process_content_info(content: pd.DataFrame):
+
+
+
+
+    def process_content_info(content: pd.DataFrame):#Get df.info() in HTML
         content_info = io.StringIO()
         content.info(buf=content_info)
         str_ = content_info.getvalue()
-
         lines = str_.split("\n")
         table = io.StringIO("\n".join(lines[3:-3]))
         datatypes = pd.read_table(table, delim_whitespace=True, names=["column", "count", "null", "dtype"])

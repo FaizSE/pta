@@ -26,8 +26,12 @@
     {% csrf_token %}
 
     <input type="submit" name = "dropna" value="Drop Row with No Data"/><br/>
-    Column Name: <input type="text" name="index">
-    <input type="submit" name = "strip" value="Remove Whitespace"/>
+    Column: <input type="text" name="index">
+    <input type="submit" name = "strip" value="Remove Whitespace"/><br/>
+    Old Column Name: <input type="text" name="oldcol">
+    New Column Name: <input type="text" name="newcol">
+    <input type="submit" name = "renamecol" value="Rename Column"/>
+
 
 </form>
 
