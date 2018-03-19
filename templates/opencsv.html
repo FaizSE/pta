@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+</head>
+
 {% block title %}Open File{% endblock %}
 
 {% block breadcrumb %}
@@ -14,7 +16,11 @@
     {{ x | safe }}
 {% endfor %}
 
-{{loaded_data | safe}}
+<div style="overflow-x:auto;">
+    <table>{{loaded_data | safe}}</table>
+
+</div>
+
 <br/>
 <form action="" method="post">
     {% csrf_token %}

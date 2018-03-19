@@ -16,6 +16,7 @@ def opencsv(request, pk):
     filelocation = str(get_object_or_404(File, pk=pk).filelocation)
     csvfile=settings.MEDIA_ROOT + '/' + filelocation
     data = pd.read_csv(csvfile, encoding = "ISO-8859-1")
+    pd.set_option('display.max_colwidth', -1)
 
     if 'dropna' in request.POST:
         data = data.dropna(how='all')
@@ -40,6 +41,7 @@ def opencsv(request, pk):
 
     data_html = data.to_html()
     data_html=data_html.replace("\\r", "")
+    data_html=data_html.replace("\\n", "<br/>")
     data_info=process_content_info(data)
     context = {'loaded_data': data_html, 'data_info':data_info, 'pk':pk}
     return render(request, 'opencsv.html', context)

@@ -8,6 +8,37 @@
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
     {% block stylesheet %}{% endblock %}  <!-- HERE -->
   </head>
+
+  <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: left;
+    padding: 0px;
+    height:1px;
+}
+
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #000000;
+    color: white;
+}
+</style>
+
   <body>
     {% block body %}  <!-- HERE -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
