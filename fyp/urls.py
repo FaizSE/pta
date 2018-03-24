@@ -28,7 +28,8 @@ urlpatterns = [
     url(r'^signup/$', accounts_views.signup, name='signup'),
     url(r'^opencsv/(?P<pk>\d+)/$', uploadcsv_views.opencsv, name='opencsv'),
     url(r'^uploadcsv/new/$', uploadcsv_views.newcsv, name='newcsv'),
-    url(r'^datalist/(?P<pk>\d+)/$', uploadcsv_views.viewcsv, name='viewcsv'),
+    url(r'^datalist/view/(?P<pk>\d+)/$', uploadcsv_views.viewcsv, name='viewcsv'),
+    url(r'^datalist/delete/(?P<pk>\d+)/$', datalist_views.deletedata, name='deletedata'),
     url(r'^datalist', datalist_views.datalist, name='datalist'),
     url(r'^admin/', admin.site.urls),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

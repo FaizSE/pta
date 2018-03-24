@@ -24,6 +24,7 @@
         <td><a href ="{% url 'viewcsv' pk=file.id %}">{{ file.name }}</a></td>
         <td>{{ file.description }}</td>
         <td>{{ file.created_at }}</td>
+        <td><a href ="{% url 'deletedata' pk=file.id %}" class="btn btn-primary">Delete</a></td>
     </tr>
 {% endfor %}
 </tbody>

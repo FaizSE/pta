@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'accounts',
     'widget_tweaks',
     'django_tables2',
-    'pandas'
+    'pandas',
+    'django_cleanup'
 ]
 
 MIDDLEWARE = [

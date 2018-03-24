@@ -32,10 +32,6 @@ def opencsv(request, pk):
         data=data.rename(columns={oldcol:newcol})
         overwritedata()
 
-
-
-
-
     def process_content_info(content: pd.DataFrame):#Get df.info() in HTML
         content_info = io.StringIO()
         content.info(buf=content_info)
