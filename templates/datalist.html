@@ -25,6 +25,7 @@
         <td>{{ file.description }}</td>
         <td>{{ file.created_at }}</td>
         <td><a href ="{% url 'deletedata' pk=file.id %}" class="btn btn-primary">Delete</a></td>
+        <td><a href ="{% url 'downloaddata' pk=file.id %}" class="btn btn-primary">Download</a></td>
     </tr>
 {% endfor %}
 </tbody>
