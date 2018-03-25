@@ -16,16 +16,22 @@
         <th>Name</th>
         <th>Description</th>
         <th>Time Uploaded</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
 {% for file in files %}
-    <tr>
-        <td><a href ="{% url 'viewcsv' pk=file.id %}">{{ file.name }}</a></td>
-        <td>{{ file.description }}</td>
-        <td>{{ file.created_at }}</td>
-        <td><a href ="{% url 'deletedata' pk=file.id %}" class="btn btn-primary">Delete</a></td>
-        <td><a href ="{% url 'downloaddata' pk=file.id %}" class="btn btn-primary">Download</a></td>
+    <tr >
+        <td style="text-align: center;">{{ file.name }}</td>
+        <td style="text-align: center;">{{ file.description }}</td>
+        <td style="text-align: center;">{{ file.created_at }}</td>
+        <td style="text-align: center;">
+            <div class="btn-group">
+            <a href ="{% url 'viewcsv' pk=file.id %}" class="btn btn-primary">Open</a>
+            <a href ="{% url 'downloaddata' pk=file.id %}" class="btn btn-success">Download</a>
+            <a href ="{% url 'deletedata' pk=file.id %}" class="btn btn-danger">Delete</a>
+            </div>
+        </td>
     </tr>
 {% endfor %}
 </tbody>
