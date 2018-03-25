@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
-
+<head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
+
 
 {% block title %}Open File{% endblock %}
 
 {% block breadcrumb %}
-  <li class="breadcrumb-item active">Opening</li>
+  <li class="breadcrumb-item active">Preprocess</li>
 
 {% endblock %}
 
@@ -18,7 +19,6 @@
 
 <div style="width:100%; height:400px; overflow:scroll;">
     <table>{{loaded_data | safe}}</table>
-
 </div>
 
 <br/>
@@ -26,13 +26,23 @@
     {% csrf_token %}
 
     <input type="submit" name = "dropna" value="Drop Row with No Data"/><br/>
-    Column: <input type="text" name="index">
+    Column:
+    <select name="index">
+        {% for x in colname %}
+            <option>{{ x | safe }}</option>
+        {% endfor %}
+    </select>
+
     <input type="submit" name = "strip" value="Remove Whitespace"/><br/>
-    Old Column Name: <input type="text" name="oldcol">
+
+    Old Column Name:
+    <select name="oldcol">
+        {% for x in colname %}
+            <option>{{ x | safe }}</option>
+        {% endfor %}
+    </select>
     New Column Name: <input type="text" name="newcol">
     <input type="submit" name = "renamecol" value="Rename Column"/>
-
-
 </form>
 
 {% endblock %}

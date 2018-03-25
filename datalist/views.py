@@ -4,10 +4,9 @@ from uploadcsv.models import File
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
-
-
 def datalist(request):
     files = File.objects.all()
+
     return render(request, 'datalist.html', {'files': files})
 
 def deletedata(request,pk):

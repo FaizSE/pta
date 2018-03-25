@@ -5,6 +5,8 @@ from django.urls import reverse
 from django.conf import settings
 import pandas as pd
 import io
+from django.shortcuts import redirect
+
 
 def viewcsv(request, pk):
     file = get_object_or_404(File, pk=pk)
@@ -14,6 +16,7 @@ def opencsv(request, pk):
     filelocation = str(get_object_or_404(File, pk=pk).filelocation)
     csvfile=settings.MEDIA_ROOT + '/' + filelocation
     data = pd.read_csv(csvfile, encoding = "ISO-8859-1")
+    colname = list(data)
     pd.set_option('display.max_colwidth', -1)
 
     def overwritedata():
@@ -22,6 +25,7 @@ def opencsv(request, pk):
     if 'dropna' in request.POST:#Remove empty data
         data = data.dropna(how='all')
         overwritedata()
+
     elif 'strip' in request.POST:#Remove trailing whitespace
         index = request.POST['index']
         data[index]=data[index].str.strip()
@@ -30,6 +34,7 @@ def opencsv(request, pk):
         oldcol = request.POST['oldcol']
         newcol = request.POST['newcol']
         data=data.rename(columns={oldcol:newcol})
+        colname = list(data)
         overwritedata()
 
     def process_content_info(content: pd.DataFrame):#Get df.info() in HTML
@@ -47,7 +52,7 @@ def opencsv(request, pk):
     data_html=data_html.replace("\\r", "")
     data_html=data_html.replace("\\n", "<br/>")
     data_info=process_content_info(data)
-    context = {'loaded_data': data_html, 'data_info':data_info, 'pk':pk}
+    context = {'loaded_data': data_html, 'data_info':data_info, 'pk':pk, 'colname':colname}
     return render(request, 'opencsv.html', context)
 
 def newcsv(request):
