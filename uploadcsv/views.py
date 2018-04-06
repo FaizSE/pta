@@ -5,8 +5,7 @@ from django.urls import reverse
 from django.conf import settings
 import pandas as pd
 import io
-from django.shortcuts import redirect
-
+import numpy as np
 
 def viewcsv(request, pk):
     file = get_object_or_404(File, pk=pk)
@@ -16,8 +15,10 @@ def opencsv(request, pk):
     filelocation = str(get_object_or_404(File, pk=pk).filelocation)
     csvfile=settings.MEDIA_ROOT + '/' + filelocation
     data = pd.read_csv(csvfile, encoding = "ISO-8859-1")
-    colname = list(data)
-    #colname = [header.replace('"', '') for header in colname]
+    data = data.rename(columns=lambda x: x.strip())#Remove trailing whitespace from headers
+    colname = list(data)#Get list of headers
+    coltype = list(data.dtypes)#Get list of headers type
+    colnametype=np.column_stack((colname, coltype))#Merge into 2D matrix
     pd.set_option('display.max_colwidth', -1)
 
     def overwritedata():
@@ -42,7 +43,13 @@ def opencsv(request, pk):
     elif 'changetype' in request.POST:#Change column type
         changetypecol = request.POST['changetypecol']
         changetypeto = request.POST['changetypeto']
-        data[changetypecol] = data[changetypecol].astype(changetypeto)
+
+        if changetypeto=='datetime64':
+            data[changetypecol] = pd.to_datetime(data[changetypecol])
+        else:
+            data[changetypecol] = data[changetypecol].astype(changetypeto)
+        coltype = list(data.dtypes)  # Get list of headers type
+        colnametype = np.column_stack((colname, coltype))  # Merge into 2D matrix
         overwritedata()
 
     def process_content_info(content: pd.DataFrame):#Get df.info() in HTML
@@ -60,7 +67,7 @@ def opencsv(request, pk):
     data_html=data_html.replace("\\r", "")
     data_html=data_html.replace("\\n", "<br/>")
     data_info=process_content_info(data)
-    context = {'loaded_data': data_html, 'data_info':data_info, 'pk':pk, 'colname':colname}
+    context = {'loaded_data': data_html, 'data_info':data_info, 'pk':pk, 'colname':colname, 'colnametype':colnametype}
     return render(request, 'opencsv.html', context)
 
 def newcsv(request):

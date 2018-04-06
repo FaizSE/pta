@@ -44,6 +44,10 @@
     New Column Name: <input type="text" name="newcol">
     <input type="submit" name = "renamecol" value="Rename Column"/><br/>
 
+    {% for x,y in colnametype %}
+    <strong>{{ x | safe }}</strong> {{ y | safe }}
+    {% endfor %}
+    <br/>
     Change Column Type:
     <select name="changetypecol">
         {% for x in colname %}
@@ -53,10 +57,10 @@
 
     Select New Column Type:
     <select name="changetypeto">
-      <option value="category">Category</option>
-      <option value="float32">Float-32</option>
-      <option value="int32">Integer-32</option>
-
+      <option value="object">Object</option>
+      <option value="float64">Float-64</option>
+      <option value="int64">Integer-64</option>
+      <option value="datetime64">Datetime-64</option>
     </select>
 
     <input type="submit" name = "changetype" value="Change Column Type"/><br/>
