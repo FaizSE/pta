@@ -27,7 +27,7 @@
 
     <input type="submit" name = "dropna" value="Drop Row with No Data"/><br/>
     Column:
-    <select name="index">
+    <select name="stripcol">
         {% for x in colname %}
             <option>{{ x | safe }}</option>
         {% endfor %}
@@ -42,7 +42,24 @@
         {% endfor %}
     </select>
     New Column Name: <input type="text" name="newcol">
-    <input type="submit" name = "renamecol" value="Rename Column"/>
+    <input type="submit" name = "renamecol" value="Rename Column"/><br/>
+
+    Change Column Type:
+    <select name="changetypecol">
+        {% for x in colname %}
+            <option>{{ x | safe }}</option>
+        {% endfor %}
+    </select>
+
+    Select New Column Type:
+    <select name="changetypeto">
+      <option value="category">Category</option>
+      <option value="float32">Float-32</option>
+      <option value="int32">Integer-32</option>
+
+    </select>
+
+    <input type="submit" name = "changetype" value="Change Column Type"/><br/>
 </form>
 
 {% endblock %}

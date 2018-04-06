@@ -17,6 +17,7 @@ def opencsv(request, pk):
     csvfile=settings.MEDIA_ROOT + '/' + filelocation
     data = pd.read_csv(csvfile, encoding = "ISO-8859-1")
     colname = list(data)
+    #colname = [header.replace('"', '') for header in colname]
     pd.set_option('display.max_colwidth', -1)
 
     def overwritedata():
@@ -27,14 +28,21 @@ def opencsv(request, pk):
         overwritedata()
 
     elif 'strip' in request.POST:#Remove trailing whitespace
-        index = request.POST['index']
-        data[index]=data[index].str.strip()
+        stripcol = request.POST['stripcol']
+        data[stripcol]=data[stripcol].str.strip()
         overwritedata()
-    elif 'renamecol' in request.POST:#Remove trailing whitespace
+
+    elif 'renamecol' in request.POST:#Rename column
         oldcol = request.POST['oldcol']
         newcol = request.POST['newcol']
         data=data.rename(columns={oldcol:newcol})
         colname = list(data)
+        overwritedata()
+
+    elif 'changetype' in request.POST:#Change column type
+        changetypecol = request.POST['changetypecol']
+        changetypeto = request.POST['changetypeto']
+        data[changetypecol] = data[changetypecol].astype(changetypeto)
         overwritedata()
 
     def process_content_info(content: pd.DataFrame):#Get df.info() in HTML
