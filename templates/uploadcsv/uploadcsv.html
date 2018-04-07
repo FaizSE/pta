@@ -7,10 +7,24 @@
 {% endblock %}
 
 {% block content %}
+  Upload
+
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
     <div class="form-group">{{form}}</div>
+
+    <button type="submit" class="btn btn-success">Upload</button>
+  </form>
+
+  Upload by URL
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+        Name: <input type="text" name="name">
+        Description: <input type="text" name="description">
+        URL: <input type="text" name="url">
+        Rename file as: <input type="text" name="renamefile">
 
     <button type="submit" class="btn btn-success">Upload</button>
   </form>

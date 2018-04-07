@@ -33,6 +33,6 @@ urlpatterns = [
     url(r'^datalist/delete/(?P<pk>\d+)/$', datalist_views.deletedata, name='deletedata'),
     url(r'^datalist/download/(?P<pk>\d+)/$', datalist_views.downloaddata, name='downloaddata'),
     url(r'^datalist', datalist_views.datalist, name='datalist'),
-    url(r'^preprocess/(?P<pk>\d+)/$', preprocess_views.opencsv, name='opencsv'),
+    url(r'^preprocess/(?P<pk>\d+)/$', preprocess_views.preprocesscsv, name='opencsv'),
     url(r'^admin/', admin.site.urls),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
