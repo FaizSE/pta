@@ -7,8 +7,7 @@
 {% endblock %}
 
 {% block content %}
-  Upload
-
+<h3>Upload from Computer</h3>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
@@ -17,15 +16,17 @@
     <button type="submit" class="btn btn-success">Upload</button>
   </form>
 
-  Upload by URL
+  <br/>
+<h3>Upload from URL</h3>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
+       <div class="form-group">
         Name: <input type="text" name="name">
         Description: <input type="text" name="description">
         URL: <input type="text" name="url">
         Rename file as: <input type="text" name="renamefile">
-
+       </div>
     <button type="submit" class="btn btn-success">Upload</button>
   </form>
 {% endblock %}

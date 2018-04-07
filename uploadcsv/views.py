@@ -21,7 +21,7 @@ def newcsv(request):
             url = request.POST['url']
             renamefile = request.POST['renamefile'] + '.csv'
             urlretrieve(url, renamefile)# Save file locally
-            df = pd.read_csv(renamefile, sep=';')
+            df = pd.read_csv(renamefile, encoding = "ISO-8859-1")
             filelocation='/csv_file/' + renamefile
             csvfile = settings.MEDIA_ROOT + '/csv_file/' + renamefile
             df.to_csv(csvfile, encoding="ISO-8859-1", index=False)
