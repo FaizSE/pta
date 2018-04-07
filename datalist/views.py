@@ -6,14 +6,13 @@ from django.http import HttpResponse
 
 def datalist(request):
     files = File.objects.all()
-
-    return render(request, 'datalist.html', {'files': files})
+    return render(request, 'datalist/datalist.html', {'files': files})
 
 def deletedata(request,pk):
     files = get_object_or_404(File, pk=pk)
     files.delete()
     files = File.objects.all()
-    return render(request, 'datalist.html', {'files': files})
+    return render(request, 'datalist/datalist.html', {'files': files})
 
 def downloaddata(request, pk):
     filelocation = str(get_object_or_404(File, pk=pk).filelocation)
@@ -25,4 +24,4 @@ def downloaddata(request, pk):
             response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
             return response
     files = File.objects.all()
-    return render(request, 'datalist.html', {'files': files})
+    return render(request, 'datalist/datalist.html', {'files': files})

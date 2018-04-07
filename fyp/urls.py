@@ -18,19 +18,21 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
-from homepage import views
+from homepage import views as homepage_views
 from accounts import views as accounts_views
 from datalist import views as datalist_views
 from uploadcsv import views as uploadcsv_views
+from preprocess import views as preprocess_views
+
 
 urlpatterns = [
-    url(r'^$', views.homepage, name='homepage'),
+    url(r'^$', homepage_views.homepage, name='homepage'),
     url(r'^signup/$', accounts_views.signup, name='signup'),
-    url(r'^opencsv/(?P<pk>\d+)/$', uploadcsv_views.opencsv, name='opencsv'),
     url(r'^uploadcsv/new/$', uploadcsv_views.newcsv, name='newcsv'),
-    url(r'^datalist/view/(?P<pk>\d+)/$', uploadcsv_views.viewcsv, name='viewcsv'),
+    url(r'^datalist/view/(?P<pk>\d+)/$', preprocess_views.viewcsv, name='viewcsv'),
     url(r'^datalist/delete/(?P<pk>\d+)/$', datalist_views.deletedata, name='deletedata'),
     url(r'^datalist/download/(?P<pk>\d+)/$', datalist_views.downloaddata, name='downloaddata'),
     url(r'^datalist', datalist_views.datalist, name='datalist'),
+    url(r'^preprocess/(?P<pk>\d+)/$', preprocess_views.opencsv, name='opencsv'),
     url(r'^admin/', admin.site.urls),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
