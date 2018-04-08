@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
-<head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-
 
 {% block title %}Open File{% endblock %}
+
+{% block stylesheet %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+{% endblock %}
 
 {% block breadcrumb %}
   <li class="breadcrumb-item active">Preprocess</li>
@@ -22,19 +23,15 @@
 </div>
 
 <br/>
-<form action="" method="post">
+
+<div id="btn1" class="button">Restructure Table</div>
+<div id="btn2" class="button">Convert Data Type</div>
+<div id="btn3" class="button">Missing Data</div>
+<div id="btn4" class="button">Edit Character</div>
+
+<div class="btn1">
+    <form action="" method="post">
     {% csrf_token %}
-
-    <input type="submit" name = "dropna" value="Drop Row with No Data"/><br/>
-    Column:
-    <select name="stripcol">
-        {% for x in colname %}
-            <option>{{ x | safe }}</option>
-        {% endfor %}
-    </select>
-
-    <input type="submit" name = "strip" value="Remove Whitespace"/><br/>
-
     Old Column Name:
     <select name="oldcol">
         {% for x in colname %}
@@ -43,7 +40,12 @@
     </select>
     New Column Name: <input type="text" name="newcol">
     <input type="submit" name = "renamecol" value="Rename Column"/><br/>
+    </form>
+</div>
 
+<div class="btn2">
+    <form action="" method="post">
+    {% csrf_token %}
     {% for x,y in colnametype %}
     <strong>{{ x | safe }}</strong> {{ y | safe }}
     {% endfor %}
@@ -63,7 +65,32 @@
       <option value="datetime64">Datetime-64</option>
     </select>
 
-    <input type="submit" name = "changetype" value="Change Column Type"/><br/>
-</form>
+    <input type="submit" name = "changetype" value="Change Column Type"/><br/>    </form>
+</div>
+
+<div class="btn3">
+     <form action="" method="post">
+    {% csrf_token %}
+        <input type="submit" name = "dropna" value="Drop Row with No Data"/><br/>
+    </form>
+</div>
+
+<div class="btn4">
+     <form action="" method="post">
+    {% csrf_token %}
+        <input type="submit" name = "strip" value="Remove Whitespace"/><br/>
+    </form>
+</div>
+
+<script>
+	   $(".button").click(function (e) {
+	       e.preventDefault();
+
+           $('[class^=btn]').not($('.'+this.id)).hide();
+
+           $('.'+this.id).slideToggle(500);
+	   });
+</script>
 
 {% endblock %}
+
