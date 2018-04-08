@@ -12,11 +12,6 @@
 {% endblock %}
 
 {% block content %}
-<h2>Data Info:</h2>
-
-{% for x in data_info %}
-    {{ x | safe }}
-{% endfor %}
 
 <div style="width:100%; height:400px; overflow:scroll;">
     <table>{{loaded_data | safe}}</table>
@@ -26,7 +21,7 @@
 
 <div id="btn1" class="button">Restructure Table</div>
 <div id="btn2" class="button">Convert Data Type</div>
-<div id="btn3" class="button">Missing Data</div>
+<div id="btn3" class="button">Incomplete Row</div>
 <div id="btn4" class="button">Edit Character</div>
 
 <div class="btn1">
@@ -44,11 +39,28 @@
 </div>
 
 <div class="btn2">
+
+    <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+    <table>
+    <thead class="thead-inverse">
+      <tr>
+        <th>Column</th>
+        <th>Data Type</th>
+      </tr>
+    </thead>
     <form action="" method="post">
     {% csrf_token %}
     {% for x,y in colnametype %}
-    <strong>{{ x | safe }}</strong> {{ y | safe }}
+        <tr>
+        <td style="text-align: center;"><strong>{{ x | safe }}</strong></td>
+        <td style="text-align: center;">{{ y | safe }}</td>
+        </tr>
     {% endfor %}
+    </table>
+    </div>
+    </div>
     <br/>
     Change Column Type:
     <select name="changetypecol">
@@ -65,13 +77,25 @@
       <option value="datetime64">Datetime-64</option>
     </select>
 
-    <input type="submit" name = "changetype" value="Change Column Type"/><br/>    </form>
+    <input type="submit" name = "changetype" value="Change Column Type"/><br/>
+    </form>
 </div>
 
 <div class="btn3">
      <form action="" method="post">
     {% csrf_token %}
-        <input type="submit" name = "dropna" value="Drop Row with No Data"/><br/>
+        <input type="submit" name = "dropna" value="Drop Empty Row"/>
+         <br/>
+        Minimum non-null column:  <input type="number" name="thresh" min="1" step="1" value="1">
+        <input type="submit" name = "dropnathresh" value="Drop Row with Missing Attribute"/>
+         <br/>
+         Column:
+    <select name="colx">
+        {% for x in colname %}
+            <option>{{ x | safe }}</option>
+        {% endfor %}
+    </select>
+        <input type="submit" name = "dropnacol" value="Drop Row without this Column"/><br/>
     </form>
 </div>
 
