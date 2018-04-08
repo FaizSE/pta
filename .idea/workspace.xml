@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4fd227bf-0a2a-4c1f-9bea-bbdee927d227" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/datalist/views.py" afterPath="$PROJECT_DIR$/datalist/views.py" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
       <change beforePath="$PROJECT_DIR$/templates/preprocess/opencsv.html" afterPath="$PROJECT_DIR$/templates/preprocess/opencsv.html" />
-      <change beforePath="$PROJECT_DIR$/templates/uploadcsv/uploadcsv.html" afterPath="$PROJECT_DIR$/templates/uploadcsv/uploadcsv.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/preprocess/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="14" column="53" lean-forward="false" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="55" />
+            <state relative-caret-position="357">
+              <caret line="26" column="23" lean-forward="true" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
               </folding>
@@ -53,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="opencsv.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="opencsv.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/preprocess/opencsv.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="91" column="10" lean-forward="true" selection-start-line="91" selection-start-column="10" selection-end-line="91" selection-end-column="10" />
+            <state relative-caret-position="1680">
+              <caret line="80" column="4" lean-forward="false" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -101,13 +98,13 @@
         <option value="$PROJECT_DIR$/accounts/views.py" />
         <option value="$PROJECT_DIR$/homepage/views.py" />
         <option value="$USER_HOME$/Downloads/scatter_tooltip.py" />
-        <option value="$PROJECT_DIR$/preprocess/views.py" />
         <option value="$PROJECT_DIR$/fyp/urls.py" />
         <option value="$PROJECT_DIR$/uploadcsv/models.py" />
         <option value="$PROJECT_DIR$/uploadcsv/views.py" />
         <option value="$PROJECT_DIR$/datalist/views.py" />
         <option value="$PROJECT_DIR$/templates/uploadcsv/uploadcsv.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/preprocess/views.py" />
         <option value="$PROJECT_DIR$/templates/preprocess/opencsv.html" />
       </list>
     </option>
@@ -423,7 +420,14 @@
       <option name="project" value="LOCAL" />
       <updated>1523093845363</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Styling v2">
+      <created>1523179643512</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1523179643512</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -531,7 +535,8 @@
     <MESSAGE value="Restructure Directory" />
     <MESSAGE value="Upload CSV use URL" />
     <MESSAGE value="Upload CSV use URL v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upload CSV use URL v2" />
+    <MESSAGE value="Styling v2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Styling v2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -873,16 +878,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/preprocess/opencsv.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="91" column="10" lean-forward="true" selection-start-line="91" selection-start-column="10" selection-end-line="91" selection-end-column="10" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/datalist/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -895,10 +890,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/preprocess/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="53" lean-forward="false" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="55" />
+        <state relative-caret-position="357">
+          <caret line="26" column="23" lean-forward="true" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/preprocess/opencsv.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="80" column="4" lean-forward="false" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -78,6 +78,12 @@
 <div class="btn4">
      <form action="" method="post">
     {% csrf_token %}
+    Column:
+    <select name="stripcol">
+        {% for x in colname %}
+            <option>{{ x | safe }}</option>
+        {% endfor %}
+    </select>
         <input type="submit" name = "strip" value="Remove Whitespace"/><br/>
     </form>
 </div>
@@ -93,4 +99,3 @@
 </script>
 
 {% endblock %}
-
