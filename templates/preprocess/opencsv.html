@@ -41,44 +41,45 @@
 <div class="btn2">
 
     <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
     <table>
     <thead class="thead-inverse">
       <tr>
         <th>Column</th>
         <th>Data Type</th>
+          <th>Change To</th>
       </tr>
     </thead>
-    <form action="" method="post">
-    {% csrf_token %}
+
     {% for x,y in colnametype %}
         <tr>
+
         <td style="text-align: center;"><strong>{{ x | safe }}</strong></td>
         <td style="text-align: center;">{{ y | safe }}</td>
+        <td style="text-align: center;">
+            <form action="" method="post">
+                {% csrf_token %}
+                 <select name="changetypecol" hidden>
+                    <option>{{ x | safe }}</option>
+                 </select>
+                <select name="changetypeto">
+                  <option value="object">Object</option>
+                  <option value="float64">Float-64</option>
+                  <option value="int64">Integer-64</option>
+                  <option value="datetime64">Datetime-64</option>
+                </select>
+
+                <input type="submit" name = "changetype" value="Accept"/><br/>
+            </form>
+        </td>
+
         </tr>
     {% endfor %}
     </table>
     </div>
     </div>
-    <br/>
-    Change Column Type:
-    <select name="changetypecol">
-        {% for x in colname %}
-            <option>{{ x | safe }}</option>
-        {% endfor %}
-    </select>
 
-    Select New Column Type:
-    <select name="changetypeto">
-      <option value="object">Object</option>
-      <option value="float64">Float-64</option>
-      <option value="int64">Integer-64</option>
-      <option value="datetime64">Datetime-64</option>
-    </select>
-
-    <input type="submit" name = "changetype" value="Change Column Type"/><br/>
-    </form>
 </div>
 
 <div class="btn3">
