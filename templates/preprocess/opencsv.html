@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Open File{% endblock %}
+{% block title %}Preprocess File{% endblock %}
 
 {% block stylesheet %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -12,6 +12,14 @@
 {% endblock %}
 
 {% block content %}
+
+<div style="background-color:red">
+{% if messages %}
+                {% for message in messages %}
+                    {{message}}
+                {% endfor %}
+{% endif %}
+</div>
 
 <div style="width:100%; height:400px; overflow:scroll;">
     <table>{{loaded_data | safe}}</table>
