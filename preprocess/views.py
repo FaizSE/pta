@@ -59,9 +59,27 @@ def preprocesscsv(request, pk):
         data = data.dropna(subset=[colx])
         overwritedata()
 
+    elif 'fillmean' in request.POST:#Replace missing data with mean
+        coly = request.POST['coly']
+        data[coly] = data[coly].fillna(data[coly].mean())
+        overwritedata()
+
+    elif 'modcol' in request.POST:#Replace character
+        modchar = request.POST['modchar']
+        oldchar = request.POST['oldchar']
+        newchar = request.POST['newchar']
+        data[modchar] = data[modchar].str.replace(oldchar, newchar)
+        overwritedata()
+
     elif 'strip' in request.POST:#Remove trailing whitespace
         stripcol = request.POST['stripcol']
         data[stripcol]=data[stripcol].str.strip()
+        overwritedata()
+
+    elif 'dropcol' in request.POST:#Drop column
+        delcol = request.POST['delcol']
+        data = data.drop(columns=[delcol])
+        colname = list(data)
         overwritedata()
 
     elif 'renamecol' in request.POST:#Rename column

@@ -28,20 +28,27 @@
 <br/>
 
 <div id="btn1" class="button">Restructure Table</div>
-<div id="btn2" class="button">Convert Data Type</div>
+<div id="btn2" class="button">Normalize Data Type</div>
 <div id="btn3" class="button">Incomplete Row</div>
 <div id="btn4" class="button">Edit Character</div>
 
 <div class="btn1">
     <form action="" method="post">
     {% csrf_token %}
-    Old Column Name:
+    <select name="delcol">
+        {% for x in colname %}
+            <option>{{ x | safe }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" name = "dropcol" value="Drop Column"/>
+    <br/>
+    Old Header Name:
     <select name="oldcol">
         {% for x in colname %}
             <option>{{ x | safe }}</option>
         {% endfor %}
     </select>
-    New Column Name: <input type="text" name="newcol">
+    New Header Name: <input type="text" name="newcol">
     <input type="submit" name = "renamecol" value="Rename Column"/><br/>
     </form>
 </div>
@@ -104,7 +111,15 @@
             <option>{{ x | safe }}</option>
         {% endfor %}
     </select>
-        <input type="submit" name = "dropnacol" value="Drop Row without this Column"/><br/>
+        <input type="submit" name = "dropnacol" value="Drop Row without this Column"/>
+         <br/>
+         Column:
+    <select name="coly">
+        {% for x in colname %}
+            <option>{{ x | safe }}</option>
+        {% endfor %}
+    </select>
+        <input type="submit" name = "fillmean" value="Fill with Mean"/><br/>
     </form>
 </div>
 
@@ -117,8 +132,20 @@
             <option>{{ x | safe }}</option>
         {% endfor %}
     </select>
-        <input type="submit" name = "strip" value="Remove Whitespace"/><br/>
+        <input type="submit" name = "strip" value="Remove Whitespace"/>
+    <br/>
+    Select Column:
+    <select name="modchar">
+        {% for x in colname %}
+            <option>{{ x | safe }}</option>
+        {% endfor %}
+    </select>
+    Char to be replaced: <input type="text" name="oldchar">
+    Replace with: <input type="text" name="newchar">
+
+    <input type="submit" name = "modcol" value="Modify Char"/>
     </form>
+
 </div>
 
 <script>
