@@ -2,38 +2,36 @@
 
 {% block title %}List of Data{% endblock %}
 
-{% block breadcrumb %}
-  <li class="breadcrumb-item active">List of Data</li>
-{% endblock %}
+{% block header %}List of Data{% endblock %}
 
 {% block content %}
 <div class="mb-4">
-    <a href="{% url 'newcsv' %}" class="btn btn-primary">Upload New File</a>
+	<a href="{% url 'newcsv' %}" class="btn btn-primary">Upload New File</a>
   </div>
 
 <table class="table">
-    <thead class="thead-inverse">
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Time Uploaded</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
+	<thead class="thead-inverse">
+	  <tr>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Time Uploaded</th>
+		<th>Action</th>
+	  </tr>
+	</thead>
+	<tbody>
 {% for file in files %}
-    <tr >
-        <td style="text-align: center;">{{ file.name }}</td>
-        <td style="text-align: center;">{{ file.description }}</td>
-        <td style="text-align: center;">{{ file.created_at }}</td>
-        <td style="text-align: center;">
-            <div class="btn-group">
-            <a href ="{% url 'viewcsv' pk=file.id %}" class="btn btn-primary">Open</a>
-            <a href ="{% url 'downloaddata' pk=file.id %}" class="btn btn-success">Download</a>
-            <a href ="{% url 'deletedata' pk=file.id %}" class="btn btn-danger">Delete</a>
-            </div>
-        </td>
-    </tr>
+	<tr >
+		<td style="text-align: center;">{{ file.name }}</td>
+		<td style="text-align: center;">{{ file.description }}</td>
+		<td style="text-align: center;">{{ file.created_at }}</td>
+		<td style="text-align: center;">
+			<div class="btn-group">
+			<a href ="{% url 'opencsv' pk=file.id %}" class="btn btn-primary">Clean</a>
+			<a href ="{% url 'downloaddata' pk=file.id %}" class="btn btn-success">Download</a>
+			<a href ="{% url 'deletedata' pk=file.id %}" class="btn btn-danger">Delete</a>
+			</div>
+		</td>
+	</tr>
 {% endfor %}
 </tbody>
 </table>
