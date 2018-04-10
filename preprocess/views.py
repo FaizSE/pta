@@ -64,6 +64,11 @@ def preprocesscsv(request, pk):
         data[coly] = data[coly].fillna(data[coly].mean())
         overwritedata()
 
+    elif 'fillmode' in request.POST:#Replace missing data with mode
+        colz = request.POST['colz']
+        data[colz] = data[colz].fillna(data[colz].mode()[0])
+        overwritedata()
+
     elif 'modcol' in request.POST:#Replace character
         modchar = request.POST['modchar']
         oldchar = request.POST['oldchar']

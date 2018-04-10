@@ -120,6 +120,13 @@
         {% endfor %}
     </select>
         <input type="submit" name = "fillmean" value="Fill with Mean"/><br/>
+         <select name="colz">
+        {% for x in colname %}
+            <option>{{ x | safe }}</option>
+        {% endfor %}
+    </select>
+        <input type="submit" name = "fillmode" value="Fill with Mode"/>
+    <br/>
     </form>
 </div>
 
