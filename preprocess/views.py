@@ -21,17 +21,16 @@ def preprocesscsv(request, pk):
     colnametype=np.column_stack((colname, coltype))#Merge into 2D matrix
     pd.set_option('display.max_colwidth', -1)
 
-
-    def process_content_info(content: pd.DataFrame):#Get df.info() in HTML
-        content_info = io.StringIO()
-        content.info(buf=content_info)
-        str_ = content_info.getvalue()
-        lines = str_.split("\n")
-        table = io.StringIO("\n".join(lines[3:-3]))
-        datatypes = pd.read_table(table, delim_whitespace=True, names=["column", "count", "null", "dtype"])
-        datatypes.set_index("column", inplace=True)
-        info = '<br/>'.join(lines[0:2] + lines[-2:-1])
-        return info, datatypes
+    # def process_content_info(content: pd.DataFrame):#Get df.info() in HTML
+    #     content_info = io.StringIO()
+    #     content.info(buf=content_info)
+    #     str_ = content_info.getvalue()
+    #     lines = str_.split("\n")
+    #     table = io.StringIO("\n".join(lines[3:-3]))
+    #     datatypes = pd.read_table(table, delim_whitespace=True, names=["column", "count", "null", "dtype"])
+    #     datatypes.set_index("column", inplace=True)
+    #     info = '<br/>'.join(lines[0:2] + lines[-2:-1])
+    #     return info, datatypes
 
     def overwritedata():
         data.to_csv(csvfile, encoding="ISO-8859-1",index=False)
@@ -109,9 +108,11 @@ def preprocesscsv(request, pk):
         except:
             messages.error(request, "Error, string exist in the column.")
 
-    data_info=process_content_info(data)
-    data_html = data.to_html(classes=["table table-bordered table-striped table-hover"])
-    data_html=data_html.replace("\\r", "")
-    data_html=data_html.replace("\\n", "<br/>")
+    # data_info=process_content_info(data)
+
+    def _color_red_or_green(val):
+        color = 'red' if val == 'K559699' else 'green'
+        return 'color: %s' % color
+    data_html=data.style.set_properties(**{'border-color': 'black', 'border': '1px solid black'}).highlight_null(null_color='red').render()
     context = {'loaded_data': data_html, 'pk':pk, 'colname':colname, 'colnametype':colnametype}
     return render(request, 'preprocess/opencsv.html', context)

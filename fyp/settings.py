@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'django_tables2',
     'pandas',
-    'django_cleanup'
+    'django_cleanup',
+    'jinja2'
 ]
 
 MIDDLEWARE = [
