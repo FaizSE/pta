@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4fd227bf-0a2a-4c1f-9bea-bbdee927d227" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
+      <change beforePath="$PROJECT_DIR$/preprocess/views.py" afterPath="$PROJECT_DIR$/preprocess/views.py" />
       <change beforePath="$PROJECT_DIR$/templates/preprocess/opencsv.html" afterPath="$PROJECT_DIR$/templates/preprocess/opencsv.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,11 +27,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/preprocess/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-177">
-              <caret line="52" column="28" lean-forward="true" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
+            <state relative-caret-position="558">
+              <caret line="112" column="86" lean-forward="false" selection-start-line="112" selection-start-column="86" selection-end-line="112" selection-end-column="86" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
               </folding>
@@ -39,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="opencsv.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="opencsv.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/preprocess/opencsv.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="265" column="33" lean-forward="true" selection-start-line="265" selection-start-column="33" selection-end-line="265" selection-end-column="33" />
+            <state relative-caret-position="213">
+              <caret line="25" column="6" lean-forward="true" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
@@ -101,10 +101,10 @@
         <option value="$PROJECT_DIR$/datalist/views.py" />
         <option value="$PROJECT_DIR$/templates/uploadcsv/uploadcsv.html" />
         <option value="$PROJECT_DIR$/fyp/urls.py" />
-        <option value="$PROJECT_DIR$/preprocess/views.py" />
         <option value="$PROJECT_DIR$/templates/datalist/datalist.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/preprocess/opencsv.html" />
+        <option value="$PROJECT_DIR$/preprocess/views.py" />
       </list>
     </option>
   </component>
@@ -477,7 +477,14 @@
       <option name="project" value="LOCAL" />
       <updated>1523374421050</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Styling v4">
+      <created>1523432523333</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1523432523333</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -566,7 +573,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Upload File v5" />
     <MESSAGE value="Upload File v6" />
     <MESSAGE value="Data Info v6" />
     <MESSAGE value="Data Info v2" />
@@ -591,7 +597,8 @@
     <MESSAGE value="Preprocess v10" />
     <MESSAGE value="Preprocess v11" />
     <MESSAGE value="Remove View CSV" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove View CSV" />
+    <MESSAGE value="Styling v4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Styling v4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -902,7 +909,7 @@
         <state relative-caret-position="210">
           <caret line="14" column="67" lean-forward="false" selection-start-line="14" selection-start-column="67" selection-end-line="14" selection-end-column="67" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -929,26 +936,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/preprocess/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-177">
-          <caret line="52" column="28" lean-forward="true" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/preprocess/opencsv.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="265" column="33" lean-forward="true" selection-start-line="265" selection-start-column="33" selection-end-line="265" selection-end-column="33" />
+        <state relative-caret-position="213">
+          <caret line="25" column="6" lean-forward="true" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#li#0;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#li#0;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#2;n#tr#0;n#table#0;n#li#0;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocess/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="112" column="86" lean-forward="false" selection-start-line="112" selection-start-column="86" selection-end-line="112" selection-end-column="86" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
           </folding>
         </state>
       </provider>

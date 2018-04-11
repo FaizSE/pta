@@ -9,34 +9,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     {% endblock %}
 
-    {% block style %}
-    table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-
-    border: 1px solid #ddd;
-}
-
-th, td {
-text-align: left;
-padding: 0px;
-height:1px;
-}
-
-tr:nth-child(even){background-color: #f2f2f2}
-
-th {
-padding-top: 12px;
-padding-bottom: 12px;
-text-align: center;
-background-color: #000000;
-color: white;
-}
-
-{% endblock style %}
-
-
 {% block header %}Preprocess{% endblock %}
 
 {% block content %}
@@ -49,8 +21,8 @@ color: white;
 	{% endif %}
 </div>
 
-<div class="row" style="height:400px; overflow:scroll;">
-	<table>{{loaded_data | safe}}</table>
+<div class="row" style="height:500px; overflow:scroll;">
+	<table>{{loaded_data | safe }}</table>
 </div>
 
 <div class="row" hidden>
@@ -93,7 +65,7 @@ color: white;
 							<div class="form-group">
 								<div class="row">
 									<div class="col">
-										<label>Old Header Name:</label>
+										<label>Old Header Name</label>
 										<select class="form-control" name="oldcol">
 											{% for x in colname %}
 											<option>{{ x | safe }}</option>
@@ -178,55 +150,64 @@ color: white;
 						<li class="list-group-item">
 							<form action="" method="post">
 								{% csrf_token %}
-								<input type="submit" name = "dropna" value="Drop Empty Row"/>
+								<input class="btn btn-primary" type="submit" name = "dropna" value="Drop Empty Row"/>
 							</form>
 						</li>
 
 						<li class="list-group-item">
 							<form action="" method="post">
 								{% csrf_token %}
+                                <div class="form-group">
 
-								Minimum non-null column:  <input type="number" name="thresh" min="1" step="1" value="1">
-								<input type="submit" name = "dropnathresh" value="Drop Row with Missing Attribute"/>
-
+                                    <label>Minimum non-null column</label>
+                                    <input class="form-control" type="number" name="thresh" min="1" step="1" value="1">
+								<input class="btn btn-primary" type="submit" name = "dropnathresh" value="Drop Row with Missing Attribute"/>
+                                </div>
 							</form>
 						</li>
 
 						<li class="list-group-item">
 							<form action="" method="post">
 								{% csrf_token %}
-								Column:
-								<select name="colx">
+                                <div class="form-group">
+								<label>Column</label>
+								<select class="form-control" name="colx">
 									{% for x in colname %}
 									<option>{{ x | safe }}</option>
 									{% endfor %}
 								</select>
-								<input type="submit" name = "dropnacol" value="Drop Row without this Column"/>
+								<input class="btn btn-primary" type="submit" name = "dropnacol" value="Drop Row without this Column"/>
+                                    </div>
 							</form>
 						</li>
 
 						<li class="list-group-item">
 							<form action="" method="post">
 								{% csrf_token %}
-								Column:
-								<select name="coly">
+                                                                <div class="form-group">
+<label>Column</label>
+
+								<select class="form-control" name="coly">
 									{% for x in colname %}
 									<option>{{ x | safe }}</option>
 									{% endfor %}
 								</select>
-								<input type="submit" name = "fillmean" value="Fill with Mean"/>
+								<input class="btn btn-primary" type="submit" name = "fillmean" value="Fill with Mean"/>
+                                                                </div>
 							</form>
 						</li>
 						<li class="list-group-item">
 							<form action="" method="post">
 								{% csrf_token %}
-								Column:
-								<select name="colz">
+                                                                                                                                <div class="form-group">
+								<label>Column</label>
+								<select class="form-control" name="colz">
 									{% for x in colname %}
 									<option>{{ x | safe }}</option>
 									{% endfor %}
 								</select>
-								<input type="submit" name = "fillmode" value="Fill with Mode"/>
+								<input class="btn btn-primary" type="submit" name = "fillmode" value="Fill with Mode"/>
+                                                                                                </div>
 							</form>
 						</li>
 					</ul>
@@ -246,38 +227,47 @@ color: white;
 						<li class="list-group-item">
 							<form action="" method="post">
 								{% csrf_token %}
-								Column:
-								<select name="stripcol">
+                                <div class="form-group">
+								<label>Column</label>
+								<select class="form-control" name="stripcol">
 									{% for x in colname %}
 									<option>{{ x | safe }}</option>
 									{% endfor %}
 								</select>
-								<input type="submit" name = "strip" value="Remove Whitespace"/>							</form>
+								<input class="btn btn-primary" type="submit" name = "strip" value="Remove Whitespace"/>
+                            </div>
+                            </form>
 							</li>
 
 							<li class="list-group-item">
 								<form action="" method="post">
 									{% csrf_token %}
+                                <div class="form-group">
 
-									Minimum non-null column:  <input type="number" name="thresh" min="1" step="1" value="1">
-									<input type="submit" name = "dropnathresh" value="Drop Row with Missing Attribute"/>
-
+                                    <label>Minimum non-null column</label>
+                                    <input class="form-control" type="number" name="thresh" min="1" step="1" value="1">
+									<input class="btn btn-primary" type="submit" name = "dropnathresh" value="Drop Row with Missing Attribute"/>
+                                </div>
 								</form>
 							</li>
 
 							<li class="list-group-item">
 								<form action="" method="post">
 									{% csrf_token %}
-									Select Column:
-									<select name="modchar">
+                                    <div class="form-group">
+                                    <label>Select Column</label>
+									<select class="form-control" name="modchar">
 										{% for x in colname %}
 										<option>{{ x | safe }}</option>
 										{% endfor %}
 									</select>
-									Char to be replaced: <input type="text" name="oldchar">
-									Replace with: <input type="text" name="newchar">
+                                        <label>Char to be replaced</label>
+                                        <input class="form-control" type="text" name="oldchar">
+                                        <label>Replace with</label>
+                                        <input class="form-control" type="text" name="newchar">
 
-									<input type="submit" name = "modcol" value="Modify Char"/>
+									<input class="btn btn-primary" type="submit" name = "modcol" value="Modify Char"/>
+                                    </div>
 								</form>
 							</li>
 
@@ -286,5 +276,7 @@ color: white;
 
 				</div>
 			</div>
+    </div>
+</div>
 
-			{% endblock %}
+{% endblock %}

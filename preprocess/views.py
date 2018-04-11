@@ -110,7 +110,7 @@ def preprocesscsv(request, pk):
             messages.error(request, "Error, string exist in the column.")
 
     data_info=process_content_info(data)
-    data_html = data.to_html()
+    data_html = data.to_html(classes=["table table-bordered table-striped table-hover"])
     data_html=data_html.replace("\\r", "")
     data_html=data_html.replace("\\n", "<br/>")
     context = {'loaded_data': data_html, 'pk':pk, 'colname':colname, 'colnametype':colnametype}
