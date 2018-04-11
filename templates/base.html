@@ -4,59 +4,12 @@
     <meta charset="utf-8">
     <title>{% block title %}Django Boards{% endblock %}</title>
     <link href="https://fonts.googleapis.com/css?family=Peralta" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     {% block stylesheet %}{% endblock %}  <!-- HERE -->
+    <style>{% block style %}{% endblock style %}</style>
   </head>
-
-  <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-
-    border: 1px solid #ddd;
-}
-
-th, td {
-    text-align: left;
-    padding: 0px;
-    height:1px;
-}
-
-
-tr:nth-child(even){background-color: #f2f2f2}
-
-
-th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    background-color: #000000;
-    color: white;
-}
-
-.button {
-    margin-top:24px;
-    margin-left:2%;
-    background-color:#F85F5F;
-    padding:0 15px;
-    line-height:36px;
-    float:left;
-    color:#FFF;
-    font-weight:600;
-    cursor:pointer;
-}
-.btn1, .btn2, .btn3, .btn4 {
-    display:none;
-    clear:both;
-    width:100%;
-}
-
-</style>
 
   <body>
     {% block body %}  <!-- HERE -->
@@ -76,7 +29,7 @@ th {
           {% endblock %}
         </ol>
         {% block content %}
-        {% endblock %}
+        {% endblock content %}
       </div>
     {% endblock body %}  <!-- AND HERE -->
   </body>
