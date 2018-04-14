@@ -234,7 +234,9 @@
 									<option>{{ x | safe }}</option>
 									{% endfor %}
 								</select>
-								<input class="btn btn-primary" type="submit" name = "strip" value="Remove Whitespace"/>
+								<input class="btn btn-primary" type="submit" name = "lstrip" value="Remove Left Whitespace"/>
+								<input class="btn btn-primary" type="submit" name = "rstrip" value="Remove Right Whitespace"/>
+								<input class="btn btn-primary" type="submit" name = "strip" value="Remove Both Side Whitespace"/>
                             </div>
                             </form>
 							</li>

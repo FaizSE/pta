@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404
 from uploadcsv.models import File
 from django.conf import settings
 import pandas as pd
-import io
 import numpy as np
 from django.contrib import messages
 
@@ -72,10 +71,24 @@ def preprocesscsv(request, pk):
         modchar = request.POST['modchar']
         oldchar = request.POST['oldchar']
         newchar = request.POST['newchar']
+
+        oldchar = oldchar.replace("(", "\(")
+        oldchar = oldchar.replace(")", "\)")
+
         data[modchar] = data[modchar].str.replace(oldchar, newchar)
         overwritedata()
 
-    elif 'strip' in request.POST:#Remove trailing whitespace
+    elif 'lstrip' in request.POST:#Remove left whitespace
+        stripcol = request.POST['stripcol']
+        data[stripcol]=data[stripcol].str.lstrip()
+        overwritedata()
+
+    elif 'rstrip' in request.POST:#Remove right whitespace
+        stripcol = request.POST['stripcol']
+        data[stripcol]=data[stripcol].str.rstrip()
+        overwritedata()
+
+    elif 'strip' in request.POST:#Remove left and right whitespace
         stripcol = request.POST['stripcol']
         data[stripcol]=data[stripcol].str.strip()
         overwritedata()
@@ -109,10 +122,6 @@ def preprocesscsv(request, pk):
             messages.error(request, "Error, string exist in the column.")
 
     # data_info=process_content_info(data)
-
-    def _color_red_or_green(val):
-        color = 'red' if val == 'K559699' else 'green'
-        return 'color: %s' % color
-    data_html=data.style.set_properties(**{'border-color': 'black', 'border': '1px solid black'}).highlight_null(null_color='red').render()
+    data_html=data.style.set_properties(**{'border-color': 'black', 'border': '1px solid black'}).highlight_null(null_color='yellow').render()
     context = {'loaded_data': data_html, 'pk':pk, 'colname':colname, 'colnametype':colnametype}
     return render(request, 'preprocess/opencsv.html', context)
