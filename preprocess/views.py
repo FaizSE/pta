@@ -36,11 +36,11 @@ def preprocesscsv(request, pk):
         colname = list(data)
         coltype = list(data.dtypes)  # Get list of headers type
         colnametype = np.column_stack((colname, coltype))  # Merge into 2D matrix
-        data_html = data.to_html()
-        data_html = data_html.replace("\\r", "")
-        data_html = data_html.replace("\\n", "<br/>")
-        context = {'loaded_data': data_html, 'pk': pk, 'colname': colname, 'colnametype': colnametype}
-        return render(request, 'preprocess/opencsv.html', context)
+        # data_html = data.to_html()
+        # data_html = data_html.replace("\\r", "")
+        # data_html = data_html.replace("\\n", "<br/>")
+        # context = {'loaded_data': data_html, 'pk': pk, 'colname': colname, 'colnametype': colnametype}
+        # return render(request, 'preprocess/opencsv.html', context)
 
     if 'dropna' in request.POST:#Remove empty row
         data = data.dropna(how='all')
@@ -74,6 +74,9 @@ def preprocesscsv(request, pk):
 
         oldchar = oldchar.replace("(", "\(")
         oldchar = oldchar.replace(")", "\)")
+        oldchar = oldchar.replace("[", "\[")
+        oldchar = oldchar.replace("]", "\]")
+        oldchar = oldchar.replace("-", "\-")
 
         data[modchar] = data[modchar].str.replace(oldchar, newchar)
         overwritedata()
@@ -97,6 +100,10 @@ def preprocesscsv(request, pk):
         delcol = request.POST['delcol']
         data = data.drop(columns=[delcol])
         colname = list(data)
+        overwritedata()
+
+    elif 'dropduplicate' in request.POST:#Drop duplicate data
+        data = data.drop_duplicates()
         overwritedata()
 
     elif 'renamecol' in request.POST:#Rename column
@@ -123,5 +130,6 @@ def preprocesscsv(request, pk):
 
     # data_info=process_content_info(data)
     data_html=data.style.set_properties(**{'border-color': 'black', 'border': '1px solid black'}).highlight_null(null_color='yellow').render()
-    context = {'loaded_data': data_html, 'pk':pk, 'colname':colname, 'colnametype':colnametype}
+    datadescribe_html=data.describe(include='all').style.set_properties(**{'border-color': 'black', 'border': '1px solid black'}).highlight_null(null_color='yellow').render()
+    context = {'loaded_data': data_html, 'pk':pk, 'colname':colname, 'colnametype':colnametype, 'datadescribe_html': datadescribe_html}
     return render(request, 'preprocess/opencsv.html', context)
