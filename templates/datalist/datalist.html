@@ -4,13 +4,17 @@
 
 {% block header %}List of Data{% endblock %}
 
+{% block style %}
+
+{% endblock style %}
+
 {% block content %}
 <div class="mb-4">
-	<a href="{% url 'newcsv' %}" class="btn btn-primary">Upload New File</a>
+	<a href="{% url 'newcsv' %}" class="btn btn-primary"><span class="glyphicon glyphicon-upload"></span> Upload New File</a>
   </div>
 
-<table class="table">
-	<thead class="thead-inverse">
+<table class="table table-hover">
+	<thead>
 	  <tr>
 		<th>Name</th>
 		<th>Description</th>
@@ -20,15 +24,15 @@
 	</thead>
 	<tbody>
 {% for file in files %}
-	<tr >
+	<tr>
 		<td style="text-align: center;">{{ file.name }}</td>
 		<td style="text-align: center;">{{ file.description }}</td>
 		<td style="text-align: center;">{{ file.created_at }}</td>
 		<td style="text-align: center;">
 			<div class="btn-group">
-			<a href ="{% url 'opencsv' pk=file.id %}" class="btn btn-primary">Clean</a>
-			<a href ="{% url 'downloaddata' pk=file.id %}" class="btn btn-success">Download</a>
-			<a href ="{% url 'deletedata' pk=file.id %}" class="btn btn-danger">Delete</a>
+			<a href ="{% url 'opencsv' pk=file.id %}" class="btn btn-primary"><span class="glyphicon glyphicon-wrench"></span> Clean</a>
+			<a href ="{% url 'downloaddata' pk=file.id %}" class="btn btn-success"><span class="glyphicon glyphicon-download"></span> Download</a>
+			<a href ="{% url 'deletedata' pk=file.id %}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
 			</div>
 		</td>
 	</tr>

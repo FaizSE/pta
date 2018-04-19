@@ -1,38 +1,67 @@
 {% load static %}<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
+<head>
     <title>{% block title %}Django Boards{% endblock %}</title>
-    <link href="https://fonts.googleapis.com/css?family=Peralta" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/app.css' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--<link href="https://fonts.googleapis.com/css?family=Peralta" rel="stylesheet">-->
+    <!--<link rel="stylesheet" href="{% static 'css/app.css' %}">-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     {% block stylesheet %}{% endblock %}  <!-- HERE -->
     <style>{% block style %}{% endblock style %}</style>
-  </head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: grey;
+    color: white;
+    text-align: center;}
 
-  <body>
+    th {
+    text-align: center;}
+
+    </style>
+</head>
+
+<body>
     {% block body %}  <!-- HERE -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'homepage' %}"><i class="icon-search"></i>Home</a>
-            <a class="navbar-brand" href="{% url 'newcsv' %}">Upload New Data</a>
-            <a class="navbar-brand" href="{% url 'datalist' %}">List of Data</a>
-            <a class="navbar-brand" href="{% url 'signup' %}">Sign Up</a>
-        </div>
-      </nav>
-      <div class="container">
-
-        <ol class="breadcrumb my-4">
-          {% block breadcrumb %}
-                  <h1>{% block header %}{% endblock %}</h1>
-          {% endblock %}
-        </ol>
-        {% block content %}
-        {% endblock content %}
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">PreProcess</a>
       </div>
-    {% endblock body %}  <!-- AND HERE -->
-  </body>
+      <ul class="nav navbar-nav">
+          <li><a href="{% url 'homepage' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+          <li><a href="{% url 'newcsv' %}"><span class="glyphicon glyphicon-upload"></span> Upload New Data</a></li>
+          <li><a href="{% url 'datalist' %}"><span class="glyphicon glyphicon-th-list"></span> List of Data</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+    <ol class="breadcrumb my-4">
+      {% block breadcrumb %}
+      <h1>{% block header %}{% endblock %}</h1>
+      {% endblock %}
+  </ol>
+  {% block content %}
+  {% endblock content %}
+</div>
+{% endblock body %}  <!-- AND HERE -->
+
+<div class="footer">
+  <p>Copyright &copy; 2018, Muhammad Faiz. All Right Reserved.</p>
+</div>
+</body>
 </html>
 
 
