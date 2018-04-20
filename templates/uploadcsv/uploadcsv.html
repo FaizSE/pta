@@ -2,32 +2,47 @@
 
 {% block title %}Upload File{% endblock %}
 
-{% block breadcrumb %}
-  <li class="breadcrumb-item active">Upload new CSV File</li>
-{% endblock %}
-
 {% block content %}
-<h3>File Upload</h3>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
 
-    <div class="form-group">{{form}}</div>
+<div class="panel panel-primary">
+    <div class="panel-heading">Upload</div>
+    <div class="panel-body">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Name</label><input class="form-control" type="text" name="name">
+                <label>Description</label><input class="form-control" type="text" name="description">
+                <label>Upload via</label>
+                <div class="radio">
+                    <label>
+                        <input id="selectfile" type="radio" name="via" value="selectfile" onclick="document.getElementById('viafile').disabled = false; document.getElementById('viaurl').disabled = true;"checked> File
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input id="selecturl" type="radio" name="via" value="selecturl" onclick="document.getElementById('viafile').disabled = true; document.getElementById('viaurl').disabled = false;"> URL
+                    </label>
+                </div>
 
-    <button type="submit" class="btn btn-success">Upload</button>
-  </form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Browse</label><input id="viafile" class="form-control-file" type="file" name="filedir" accept=".csv">
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <label>URL</label><input id="viaurl" class="form-control" type="text" name="url" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  <br/>
-<h3>URL Upload</h3>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+            <button type="reset" class="btn btn-info btn-block"><span class="glyphicon glyphicon-repeat"></span> Reset</button>
+            <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-upload"></span> Upload</button>
 
-       <div class="form-group">
-        Name: <input type="text" name="name">
-        Description: <input type="text" name="description">
-        URL: <input type="text" name="url">
-        Rename file as: <input type="text" name="renamefile">
-       </div>
-    <button type="submit" class="btn btn-success">Upload</button>
-  </form>
+        </form>
+    </div>
+</div>
+
 {% endblock %}
+
 

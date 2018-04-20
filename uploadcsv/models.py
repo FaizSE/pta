@@ -6,9 +6,3 @@ class File(models.Model):
     description = models.CharField(max_length=100)
     filelocation = models.FileField(upload_to="csv_file/")
     created_at = models.DateTimeField(auto_now_add=True)
-
-# FileUpload form class.
-class UploadForm(ModelForm):
-    class Meta:
-        model = File
-        fields = ('name', 'description','filelocation',)
