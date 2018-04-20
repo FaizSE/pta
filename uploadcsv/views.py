@@ -12,11 +12,10 @@ def newcsv(request):
             name = request.POST['name']
             description = request.POST['description']
             via=request.POST['via']
-            url = request.POST['url']
-
             renamefile = name + '.csv'
 
             if via == 'selecturl':#Upload via URL
+                url = request.POST['url']
                 csvfile = settings.MEDIA_ROOT + '/csv_file/' + renamefile
                 urlretrieve(url, csvfile)# Save file locally
                 df = pd.read_csv(csvfile, encoding = "ISO-8859-1")

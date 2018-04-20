@@ -129,7 +129,7 @@ def preprocesscsv(request, pk):
             messages.error(request, "Error, string exist in the column.")
 
     # data_info=process_content_info(data)
-    data_html=data.style.set_properties(**{'border-color': 'black', 'border': '1px solid black'}).highlight_null(null_color='yellow').render()
-    datadescribe_html=data.describe(include='all').style.set_properties(**{'border-color': 'black', 'border': '1px solid black'}).highlight_null(null_color='yellow').render()
+    data_html=data.style.set_properties(**{'border':'1px solid black', 'id':'myTable'}).highlight_null(null_color='yellow').render()
+    datadescribe_html=data.describe(include='all').to_html()
     context = {'loaded_data': data_html, 'pk':pk, 'colname':colname, 'colnametype':colnametype, 'datadescribe_html': datadescribe_html}
     return render(request, 'preprocess/opencsv.html', context)
