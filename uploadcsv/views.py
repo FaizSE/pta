@@ -6,12 +6,19 @@ from django.urls import reverse
 from urllib.request import urlretrieve
 from django.conf import settings
 import pandas as pd
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
+
+@login_required(login_url='login')
 
 def newcsv(request):
     if request.method == 'POST':
             name = request.POST['name']
             description = request.POST['description']
             via=request.POST['via']
+            userid=request.POST['userid']
+            userinstance=User.objects.get(id=userid)
             renamefile = name + '.csv'
 
             if via == 'selecturl':#Upload via URL
@@ -21,7 +28,7 @@ def newcsv(request):
                 df = pd.read_csv(csvfile, encoding = "ISO-8859-1")
                 filelocation='/csv_file/' + renamefile
                 df.to_csv(csvfile, encoding="ISO-8859-1", index=False)
-                File.objects.create(name=name, description=description,filelocation=filelocation)
+                File.objects.create(name=name, description=description,filelocation=filelocation, user=userinstance)
 
             else:#Upload via File
                 file = request.FILES['filedir']
@@ -29,7 +36,7 @@ def newcsv(request):
                 filelocation = '/csv_file/' + renamefile
                 csvfile = settings.MEDIA_ROOT + '/csv_file/' + renamefile
                 df.to_csv(csvfile, encoding="ISO-8859-1", index=False)
-                File.objects.create(name=name, description=description, filelocation=filelocation)
+                File.objects.create(name=name, description=description, filelocation=filelocation, user=userinstance)
 
             return HttpResponseRedirect(reverse('newcsv'))
 

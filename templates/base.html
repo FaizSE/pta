@@ -46,15 +46,25 @@
             {% endif %}
         </ul>
         <ul class="nav navbar-nav navbar-right">
-
             {% if user.is_authenticated %}
-            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ user.get_username }} <span class="glyphicon glyphicon-triangle-bottom"></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#"><span class="glyphicon glyphicon-user"></span> Manage Account</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                </div>
+            </li>
+
             {% else %}
+
             <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
             {% endif %}
-
-
         </ul>
     </div>
 </nav>

@@ -3,9 +3,12 @@ from django.conf import settings
 from uploadcsv.models import File
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+
+@login_required(login_url='login')
 
 def datalist(request):
-    files = File.objects.all()
+    files = File.objects.filter(user=request.user.id)
     return render(request, 'datalist/datalist.html', {'files': files})
 
 def deletedata(request,pk):
