@@ -13,7 +13,7 @@
     <style>{% block style %}{% endblock style %}</style>
     <style>
     .footer {
-    position: fixed;
+    position: fixed; uygyugu
     left: 0;
     bottom: 0;
     width: 100%;
@@ -32,33 +32,42 @@
 
 <body>
 
-    {% block body %}  <!-- HERE -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
+{% block body %}  <!-- HERE -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">PreProcess</a>
-      </div>
-      <ul class="nav navbar-nav">
-          <li><a href="{% url 'homepage' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-          <li><a href="{% url 'newcsv' %}"><span class="glyphicon glyphicon-upload"></span> Upload New Data</a></li>
-          <li><a href="{% url 'datalist' %}"><span class="glyphicon glyphicon-th-list"></span> List of Data</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-          <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-  </div>
+            <a class="navbar-brand" href="#">PreProcess</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="{% url 'homepage' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'newcsv' %}"><span class="glyphicon glyphicon-upload"></span> Upload New Data</a></li>
+            <li><a href="{% url 'datalist' %}"><span class="glyphicon glyphicon-th-list"></span> List of Data</a></li>
+            {% endif %}
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            {% endif %}
+
+
+        </ul>
+    </div>
 </nav>
 
 <div class="container">
 
-  {% block content %}
-  {% endblock content %}
+    {% block content %}
+    {% endblock content %}
 </div>
 {% endblock body %}  <!-- AND HERE -->
 
 <div class="footer">
-  <p>Copyright &copy; 2018, Muhammad Faiz. All Right Reserved.</p>
+    <p>Copyright &copy; 2018, Muhammad Faiz. All Right Reserved.</p>
 </div>
 </body>
 </html>

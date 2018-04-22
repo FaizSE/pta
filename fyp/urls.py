@@ -17,6 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 from homepage import views as homepage_views
 from accounts import views as accounts_views
@@ -28,6 +29,8 @@ from preprocess import views as preprocess_views
 urlpatterns = [
     url(r'^$', homepage_views.homepage, name='homepage'),
     url(r'^signup/$', accounts_views.signup, name='signup'),
+    url(r'^login/$', auth_views.login,{'template_name': 'accounts/login.html'}, name='login'),
+    url(r'^logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
     url(r'^uploadcsv/new/$', uploadcsv_views.newcsv, name='newcsv'),
     url(r'^datalist/view/(?P<pk>\d+)/$', preprocess_views.viewcsv, name='viewcsv'),
     url(r'^datalist/delete/(?P<pk>\d+)/$', datalist_views.deletedata, name='deletedata'),
