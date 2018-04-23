@@ -16,14 +16,9 @@
 
 
 <div class="container">
-    <div class="panel-group">
+                            {{loaded_data | safe }}
 
-        <div class="panel panel-warning">
-            <div class="panel-heading">Data Content</div>
-            <div class="panel-body" style="height:500px; overflow:scroll;">
-                {{loaded_data | safe }}
-            </div>
-        </div>
+    <div class="panel-group">
 
         <div class="panel panel-info">
             <div class="panel-heading">Data Info</div>
@@ -282,4 +277,13 @@
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('.dataframe').DataTable();
+} );
+</script>
 {% endblock %}
