@@ -14,7 +14,7 @@ def datalist(request):
 def deletedata(request,pk):
     files = get_object_or_404(File, pk=pk)
     files.delete()
-    files = File.objects.all()
+    files = File.objects.filter(user=request.user.id)
     return render(request, 'datalist/datalist.html', {'files': files})
 
 def downloaddata(request, pk):
@@ -26,5 +26,5 @@ def downloaddata(request, pk):
             response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
             response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
             return response
-    files = File.objects.all()
+    files = File.objects.filter(user=request.user.id)
     return render(request, 'datalist/datalist.html', {'files': files})

@@ -4,7 +4,9 @@ from django.conf import settings
 import pandas as pd
 import numpy as np
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='login')
 
 def viewcsv(request, pk):
     file = get_object_or_404(File, pk=pk)

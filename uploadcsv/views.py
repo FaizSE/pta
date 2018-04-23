@@ -17,8 +17,7 @@ def newcsv(request):
             name = request.POST['name']
             description = request.POST['description']
             via=request.POST['via']
-            userid=request.POST['userid']
-            userinstance=User.objects.get(id=userid)
+            userinstance=User.objects.get(id=request.user.id)
             renamefile = name + '.csv'
 
             if via == 'selecturl':#Upload via URL
