@@ -128,10 +128,10 @@ def preprocesscsv(request, pk):
             overwritedata()
 
         except:
-            messages.error(request, "Error, string exist in the column.")
+            messages.error(request, "String exist in the column.")
 
     # data_info=process_content_info(data)
-    data_html=data.style.set_table_attributes('class="example"').set_properties(**{'border':'1px solid black', 'id':'myTable'}).highlight_null(null_color='yellow').render()
+    data_html=data.style.set_table_attributes('class="data_html"').set_properties(**{'border':'1px solid black', 'id':'myTable'}).highlight_null(null_color='yellow').render()
     datadescribe_html=data.describe(include='all').to_html()
     context = {'loaded_data': data_html, 'pk':pk, 'colname':colname, 'colnametype':colnametype, 'datadescribe_html': datadescribe_html}
     return render(request, 'preprocess/opencsv.html', context)

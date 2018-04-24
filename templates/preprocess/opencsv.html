@@ -6,17 +6,21 @@
 
 {% block content %}
 
-<div class="row" style="background-color:red">
-    {% if messages %}
-    {% for message in messages %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-danger alert-dismissible fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Error! </strong>
     {{message}}
-    {% endfor %}
-    {% endif %}
 </div>
+{% endfor %}
+{% endif %}
+
 
 
 <div class="container">
-                            {{loaded_data | safe }}
+    {{loaded_data | safe }}
 
     <div class="panel-group">
 
@@ -283,7 +287,7 @@
 
 <script>
 $(document).ready(function() {
-    $('.example').DataTable();
+    $('.data_html').DataTable();
 } );
 </script>
 {% endblock %}

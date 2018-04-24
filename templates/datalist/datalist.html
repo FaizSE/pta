@@ -5,27 +5,22 @@
 {% block header %}List of Data{% endblock %}
 
 {% block content %}
-<div class="row">
-<div class="col-md-6">
-    <a href="{% url 'newcsv' %}" class="btn btn-warning"><span class="glyphicon glyphicon-upload"></span> Upload New Data</a>
-</div>
-</div>
-<table class="table table-hover" id="example">
+<table class="table table-hover" id="datalist">
     <thead>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Time Uploaded</th>
+    <tr style="cursor: pointer;">
+        <th>Name <span class="glyphicon glyphicon-sort text-success"></span></th>
+        <th>Description <span class="glyphicon glyphicon-sort text-success"></span></th>
+        <th>Time Uploaded <span class="glyphicon glyphicon-sort text-success"></span></th>
         <th>Action</th>
     </tr>
     </thead>
     <tbody>
     {% for file in files %}
-    <tr>
-        <td style="text-align: center;">{{ file.name }}</td>
-        <td style="text-align: center;">{{ file.description }}</td>
-        <td style="text-align: center;">{{ file.created_at }}</td>
-        <td style="text-align: center;">
+    <tr style="text-align: center;">
+        <td>{{ file.name }}</td>
+        <td>{{ file.description }}</td>
+        <td>{{ file.created_at }}</td>
+        <td>
             <div class="btn-group">
                 <a href ="{% url 'opencsv' pk=file.id %}" class="btn btn-primary"><span class="glyphicon glyphicon-wrench"></span> Clean</a>
                 <a href ="{% url 'downloaddata' pk=file.id %}" class="btn btn-success"><span class="glyphicon glyphicon-download"></span> Download</a>
@@ -44,7 +39,7 @@
 
 <script>
 $(document).ready(function() {
-    $('#example').DataTable();
+    $('#datalist').DataTable();
 } );
 </script>
 {% endblock %}

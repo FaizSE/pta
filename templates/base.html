@@ -36,10 +36,9 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">PreProcess</a>
+            <a class="navbar-brand" href="{% url 'homepage' %}">PreProcess <span class="glyphicon glyphicon-wrench text-success"></a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="{% url 'homepage' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'newcsv' %}"><span class="glyphicon glyphicon-upload"></span> Upload New Data</a></li>
             <li><a href="{% url 'datalist' %}"><span class="glyphicon glyphicon-th-list"></span> List of Data</a></li>
