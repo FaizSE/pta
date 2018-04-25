@@ -51,11 +51,11 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ user.get_username }} <span class="glyphicon glyphicon-triangle-bottom"></span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#"><span class="glyphicon glyphicon-user"></span> Manage Account</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
-                </div>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-user"></span> Manage Account</a></li>
+                    <li class="divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
             </li>
 
             {% else %}

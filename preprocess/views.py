@@ -132,6 +132,6 @@ def preprocesscsv(request, pk):
 
     # data_info=process_content_info(data)
     data_html=data.style.set_table_attributes('class="data_html"').set_properties(**{'border':'1px solid black', 'id':'myTable'}).highlight_null(null_color='yellow').render()
-    datadescribe_html=data.describe(include='all').to_html()
+    datadescribe_html=data.describe(include='all').to_html(classes=["table-striped", "table-hover"])
     context = {'loaded_data': data_html, 'pk':pk, 'colname':colname, 'colnametype':colnametype, 'datadescribe_html': datadescribe_html}
     return render(request, 'preprocess/opencsv.html', context)
