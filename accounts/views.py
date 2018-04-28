@@ -29,6 +29,7 @@ def manageaccount(request):
             obj.username = name
             obj.set_password(password)
             obj.save()
+            messages.error(request, "Please re-login.")
             return redirect('login')
 
 

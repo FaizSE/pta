@@ -3,6 +3,17 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Profile changed. </strong>
+    {{message}}
+</div>
+{% endfor %}
+{% endif %}
+
   <h2>Login</h2>
   <form method="post">
     {% csrf_token %}
