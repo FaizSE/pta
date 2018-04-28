@@ -52,7 +52,7 @@
                     {{ user.get_username }} <span class="glyphicon glyphicon-triangle-bottom"></span>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-user"></span> Manage Account</a></li>
+                    <li><a class="dropdown-item" href="{% url 'manageaccount' %}"><span class="glyphicon glyphicon-user"></span> Manage Account</a></li>
                     <li class="divider"></li>
                     <li><a class="dropdown-item" href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 </ul>
@@ -69,7 +69,6 @@
 </nav>
 
 <div class="container">
-
     {% block content %}
     {% endblock content %}
 </div>

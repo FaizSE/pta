@@ -29,6 +29,7 @@ from preprocess import views as preprocess_views
 urlpatterns = [
     url(r'^$', homepage_views.homepage, name='homepage'),
     url(r'^signup/$', accounts_views.signup, name='signup'),
+    url(r'^manageaccount/$', accounts_views.manageaccount, name='manageaccount'),
     url(r'^login/$', auth_views.login,{'template_name': 'accounts/login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
     url(r'^uploadcsv/new/$', uploadcsv_views.newcsv, name='newcsv'),

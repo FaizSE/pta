@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload File{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-danger alert-dismissible fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Error! </strong>
+    {{message}}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="panel panel-success">
+    <div class="panel-heading">Manage Account</div>
+    <div class="panel-body">
+        <form class="form-horizontal" action="" method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">New Username</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="name" placeholder="New Username" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">New Password</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="password" id="password" name="password" placeholder="New Password" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Confirm Password</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="password" id="confirm_password" name="password" placeholder="Retype New Password" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2"></label>
+                <div class="col-sm-10">
+
+                </div>
+            </div>
+
+            <button type="reset" class="btn btn-info btn-block"><span class="glyphicon glyphicon-repeat"></span> Clear Form</button>
+            <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-upload"></span> Update Account</button>
+        </form>
+    </div>
+
+    <script>
+    var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+</script>
+    {% endblock %}
+
+
