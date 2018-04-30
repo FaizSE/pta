@@ -22,27 +22,12 @@ def preprocesscsv(request, pk):
     colnametype=np.column_stack((colname, coltype))#Merge into 2D matrix
     pd.set_option('display.max_colwidth', -1)
 
-    # def process_content_info(content: pd.DataFrame):#Get df.info() in HTML
-    #     content_info = io.StringIO()
-    #     content.info(buf=content_info)
-    #     str_ = content_info.getvalue()
-    #     lines = str_.split("\n")
-    #     table = io.StringIO("\n".join(lines[3:-3]))
-    #     datatypes = pd.read_table(table, delim_whitespace=True, names=["column", "count", "null", "dtype"])
-    #     datatypes.set_index("column", inplace=True)
-    #     info = '<br/>'.join(lines[0:2] + lines[-2:-1])
-    #     return info, datatypes
-
     def overwritedata():
         data.to_csv(csvfile, encoding="ISO-8859-1",index=False)
         colname = list(data)
         coltype = list(data.dtypes)  # Get list of headers type
         colnametype = np.column_stack((colname, coltype))  # Merge into 2D matrix
-        # data_html = data.to_html()
-        # data_html = data_html.replace("\\r", "")
-        # data_html = data_html.replace("\\n", "<br/>")
-        # context = {'loaded_data': data_html, 'pk': pk, 'colname': colname, 'colnametype': colnametype}
-        # return render(request, 'preprocess/opencsv.html', context)
+
 
     if 'dropna' in request.POST:#Remove empty row
         data = data.dropna(how='all')
@@ -130,7 +115,6 @@ def preprocesscsv(request, pk):
         except:
             messages.error(request, "String exist in the column.")
 
-    # data_info=process_content_info(data)
     data_html=data.style.set_table_attributes('class="data_html"').set_properties(**{'border':'1px solid black', 'id':'myTable'}).highlight_null(null_color='yellow').render()
     datadescribe_html=data.describe(include='all').to_html(classes=["table-striped", "table-hover"])
     context = {'loaded_data': data_html, 'pk':pk, 'colname':colname, 'colnametype':colnametype, 'datadescribe_html': datadescribe_html}

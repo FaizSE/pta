@@ -32,7 +32,6 @@ def manageaccount(request):
             messages.error(request, "Please re-login.")
             return redirect('login')
 
-
         except:
             messages.error(request, "Username is taken. Please choose another username.")
 
