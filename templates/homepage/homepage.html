@@ -1,66 +1,273 @@
-{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}
-    Homepage
-{% endblock %}
+  <head>
 
-{% block content %}
-<h3>Step 1. Excel: Import Your CSV file into a Spreadsheet</h3>
-<p>In Excel, create a new workbook. Then select the <strong>Import</strong> option from the <strong>File</strong> menu.</p>
-<p>A dialog box will pop up. Make sure <strong>CSV file</strong> is selected and click the <strong>Import</strong> button.</p>
-<p>You can now select your CSV file from where you have saved it.</p>
-<h3>Step 2. Excel: Confirm Your Data is ‘Delimited’</h3>
-<p>In Excel, you will now be asked to confirm that your data is <strong>delimited</strong>. That is, your CSV file is filled with data separated only by a comma. Excel should be able to automatically tell that this is correct. Now click the <strong>Next</strong> button.</p>
-<h3>Step 3. Excel: Confirm Your Data Columns</h3>
-<p>In Excel, you will now be shown a preview of how your data will be sorted into columns, based on the fact that your data is separated by commas, and text items may be enclosed in “inverted commas”. Check the data preview, and select or deselect delimiter options and text qualifier options until the preview reflects how you expect the data to look. In most of these cases, this will be chosen for you automatically. For example, Excel will know that all text data has a text qualifier of inverted commas, so it will let you know it plans to remove the inverted commas when it imports the data. When you are happy with how the data will be imported, click the <strong>Next</strong> button.</p>
-<h3>Step 4. Excel: Confirm Data Types</h3>
-<p>In Excel, you will now be asked to select what type of data is in each row. Select <strong>General</strong> for all columns now (we will customize each column of data after it is imported). Double-check the advanced setting to ensure your data reflects standard conventions for numbers in their thousands and for decimal places.</p>
-<p>For example, if you are using a US data source, a comma is generally used to separate thousands,(e.g. “1,000”) and a full stop represents decimal points. It’s the other way around in Europe! So depending on your original data source, you may need to change these settings.</p>
-<p>Now click the <strong>Finish</strong> button to import the CSV data into your Excel spreadsheet.</p>
-<h3>Step 5. Excel: Choose Where to Import Your Data</h3>
-<p>Finally in Excel, you will be asked where you want to import the data. If you opened a new workbook at Step 1 above, select the <strong>Existing sheet</strong> already chosen for you, then click <strong>OK</strong>.</p>
-<h3>Step 6. Google Drive: Import Your CSV File into a New Spreadsheet</h3>
-<p>In Google Drive, you can do the above steps 1 – 5 in the one dialog box. First, create a new spreadsheet from the File menu. Now choose <strong>Import</strong> from the File menu.</p>
-<p>A dialog box will appear. Select your CSV file from your hard drive.</p>
-<p>Now select <strong>Replace spreadsheet</strong>, as we have already opened a new spreadsheet.</p>
-<p>Check that the preview shows how you want your data distributed in columns. In most cases, this will automatically be set up correctly. If not, change the “separator character” to “tab” or “comma” to see if the data is now shown correctly in columns.</p>
-<p>Click the <strong>Import</strong> button to proceed.</p>
-<h3>Step 7. Tidy Up Columns</h3>
-<p>As we will be cleaning your data spreadsheets, it will be easier to do so if you can see all your data in neat columns. Adjust the width of columns to better show the data. Move your cursor between the column letters at the top of either Excel or Google Drive until the cursor turns into a width movement symbol and stretch the column width so that your data is easier to read.</p>
-<h3>Step 8. Check Your Header Row</h3>
-<p>Now check that your first row has the correct column headings. When you import some data from some sources, you may have the dates down the left column (the y-axis) and the values along the rest of the row, starting from the second column (the x-axis). So the very first column on the x-axis will be left blank.</p>
-<p>For example:</p>
-<p>If that’s the case, enter a description (for now) for the first column, for example “Date” or “Month”.</p>
-<p>If you are using your CSV data in a spreadsheet, you can also set the first row as your column headings. This is useful if you are working with large sets of data where you may scroll down and not be able to see the headings row.</p>
-<p>In Excel, click on <strong>Page Layout</strong> under the <strong>File</strong> menu. Choose <strong>Sheet</strong> from the menu in the popup dialog box and click on the row in your spreadsheet for the column headings. It should now be indicated in the box <strong>rows to repeat at top</strong> usually as <strong>$1:$1</strong>.</p>
-<p>In Google Drive, select <strong>Freeze row</strong> from the <strong>View</strong> menu and select <strong>Freeze 1 row</strong> to indicate the header row.</p>
-<h3>Step 9. Confirm What Data You Need</h3>
-<p>If you are cleaning up this data because you will be moving it into another online tool or app, check the requirements for importing data into your destination app (see the Use Case examples under Section 3. Moving Data, below).</p>
-<p>If you are cleaning your CSV file to share it in a spreadsheet, confirm with your client what data they want you to be able to show.</p>
-<h3>Step 10. Delete Unnecessary Data</h3>
-<p><em>Note: You may want to save a copy of your spreadsheet before you start deleting any data, just in case you change your mind or need it later on.</em></p>
-<p>Now remove any columns you will not need. For example, if you want to import your keyword research into a content calendar, you may only be interested in the keyword and local monthly search volume columns.</p>
-<p>You can delete the columns you don’t need by clicking on the column header letter until the whole column is shaded. Now choose <strong>Delete</strong> from the <strong>Edit</strong> menu (in Excel) or <strong>Delete column</strong> from the Edit menu (in Google Drive).</p>
-<h3>Step 11. Make Sure Date Columns are in the Right Date Format</h3>
-<p>Again, check where you will be importing the data for any requirements (see section 3 user cases below).</p>
-<p>If your CSV file data includes dates, select the column with the dates.</p>
-<p>In Excel, select <strong>Cells…</strong> from the <strong>Format</strong> menu. Now select <strong>Number</strong> from the top row menu, and <strong>Date</strong> from the lefthand side menu. Choose the date menu that corresponds with the import requirements, or select the most readable version for you and your client, if you are just importing the data into your own spreadsheets.</p>
-<p>In Google Drive, select the column and the click on the button that reads <strong>123</strong> in the toolbar. Choose a date format from the list, or select more formats to see an additional menu of date format options.</p>
-<p>If your CSV file requires times to be included with the dates, make sure they are in the right format (hh:mm or hh:mm:ss).</p>
-<p>If your CSV file requires dates and times to be in separate columns, copy the whole column, then format the first column to be in date only format, and the second column to be in time only format. The rest of the data will be automatically removed.</p>
-<h3>Step 12. Make Sure All Numbers are Uniform</h3>
-<p>Any columns with numerical data are best formatted by removing the thousand separators so numbers appear as 23000 for example and not 23,000.</p>
-<p>In Excel, select the column, and again choose <strong>Cells…</strong> from the Format menu. Choose <strong>Number</strong> from the horizontal menu, and <strong>Number</strong> from the lefthand menu. Make sure <strong>Use 1000 separator</strong> is unchecked.</p>
-<p>Google Drive insists on using thousand separators. This will not affect your CSV imports, but may be confusing if your clients are European. Click on the column to select it, select the <strong>Format</strong> menu option and click on <strong>Number</strong>, then select <strong>Normal</strong>.</p>
-<h3>Step 13. Add Columns You Do Need</h3>
-<p>Check the list of data you need that you created at Step 9. Add columns to your spreadsheet for each of these. Some online tools also require that data be ordered in a particular way (for example, scheduling tweets may require a specific order for your CSV file data). If that’s the case, move the columns now to match the preferred import order where you will be sending the data.</p>
-<p>Now make sure the column headings are an exact match for what your importing destination is expecting. Do not use inverted commas at this stage for headings or any text data in your columns.</p>
-<h3>Step 14. Incorporate Cleaned Data into Your Working Spreadsheets</h3>
-<p>In some cases, such as cleaning your keyword data, you may not be looking to add it to any destination source, other than a content calendar. Save a copy of your spreadsheet as a backup file, and then select the columns you want to move into your content calendar. Copy these columns now and paste them into their destination spreadsheet.</p>
-<h3>Step 15. Save Cleaned Data as a CSV File Ready to Import into an Online Tool</h3>
-<p>If the final destination for your cleaned data is to add it to another program, you are now ready to save this spreadsheet as a CSV file so you can import it into an online app or webtool.</p>
-<p>Repeat Section 1 Creating a CSV file from a spreadsheet again.</p>
-{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
+    <title>UKM Data Preprocessing System</title>
 
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/creative.min.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="{% url 'signup' %}">Start Cleaning</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#portfolio">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="masthead text-center text-white d-flex">
+      <div class="container my-auto">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h1 class="text-uppercase">
+              <strong>Lightning Fast Data Preprocessing Platform</strong>
+            </h1>
+            <hr>
+          </div>
+          <div class="col-lg-8 mx-auto">
+            <p class="text-faded mb-5">UKM PreProcess is a web platform for data science teams to ensure data quality.</p>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="bg-primary" id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-heading text-white">We've got what you need!</h2>
+            <hr class="light my-4">
+            <p class="text-faded mb-4">UKM Preprocess has everything you need to get your data clean in no time! All of the functionalities on UKM PreProcess are Python based, free and easy to use. No strings attached!</p>
+            <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading">At Your Service</h2>
+            <hr class="my-4">
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-cloud text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Cloud Based</h3>
+              <p class="text-muted mb-0">Upload your file on cloud and clean it on the go!</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-american-sign-language-interpreting text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Easy to Use</h3>
+              <p class="text-muted mb-0">You can use this tools easily.</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-gbp text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Free to Use</h3>
+              <p class="text-muted mb-0">This tool is free to use!</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-table text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Optimized for CSV</h3>
+              <p class="text-muted mb-0">Developed specially for CSV file.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-0" id="portfolio">
+      <div class="container-fluid p-0">
+        <div class="row no-gutters popup-gallery">
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="../media/img/portfolio/fullsize/1.jpg">
+              <img class="img-fluid" src="../media/img/portfolio/thumbnails/1.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="../media/img/portfolio/fullsize/2.jpg">
+              <img class="img-fluid" src="../media/img/portfolio/thumbnails/2.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="../media/img/portfolio/fullsize/3.jpg">
+              <img class="img-fluid" src="../media/img/portfolio/thumbnails/3.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="../media/img/portfolio/fullsize/4.jpg">
+              <img class="img-fluid" src="../media/img/portfolio/thumbnails/4.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="../media/img/portfolio/fullsize/5.jpg">
+              <img class="img-fluid" src="../media/img/portfolio/thumbnails/5.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="../media/img/portfolio/fullsize/6.jpg">
+              <img class="img-fluid" src="../media/img/portfolio/thumbnails/6.jpg" alt="">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Category
+                  </div>
+                  <div class="project-name">
+                    Project Name
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-dark text-white">
+      <div class="container text-center">
+        <h2 class="mb-4">Clean Your Data For Free!</h2>
+        <a class="btn btn-light btn-xl sr-button" href="{% url 'signup' %}">Start Now!</a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-heading">Let's Get In Touch!</h2>
+            <hr class="my-4">
+            <p class="mb-5">Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 ml-auto text-center">
+            <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
+            <p>+6013-8691323</p>
+          </div>
+          <div class="col-lg-4 mr-auto text-center">
+            <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
+            <p>
+              <a href="mailto:A155450@siswa.ukm.edu.my">A155450@siswa.ukm.edu.my</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'vendor/scrollreveal/scrollreveal.min.js' %}"></script>
+    <script src="{% static 'vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'js/creative.min.js' %}"></script>
+
+  </body>
+
+</html>
