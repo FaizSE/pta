@@ -11,7 +11,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             auth_login(request, user)
-            return redirect('homepage')
+            return redirect('uploadcsv')
     else:
         form = UserCreationForm()
     return render(request, 'accounts/signup.html', {'form': form})
