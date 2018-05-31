@@ -6,18 +6,14 @@
 
 {% block content %}
 
-
 {% if messages %}
 {% for message in messages %}
-<div class="alert alert-danger alert-dismissible fade in">
+<div class="alert alert-info alert-dismissible fade in">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Error! </strong>
     {{message}}
 </div>
 {% endfor %}
 {% endif %}
-
-
 
 <div class="container">
     {{loaded_data | safe }}
@@ -128,7 +124,6 @@
                         </li>
                     </ul>
                 </div>
-            </div>
 
             <!--Panel 3-->
             <div class="panel panel-default">
@@ -205,8 +200,6 @@
                     </ul>
                 </div>
 
-            </div>
-
             <!--Panel 4-->
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -245,28 +238,22 @@
                             <form action="" method="post">
                                 {% csrf_token %}
                                 <div class="form-group">
-
-                                    <label>Minimum non-null column</label>
-                                    <input class="form-control" type="number" name="thresh" min="1" step="1" value="1">
-                                    <input class="btn btn-primary" type="submit" name = "dropnathresh" value="Drop Row with Missing Attribute"/>
-                                </div>
-                            </form>
-                        </li>
-
-                        <li class="list-group-item">
-                            <form action="" method="post">
-                                {% csrf_token %}
-                                <div class="form-group">
                                     <label>Select Column</label>
                                     <select class="form-control" name="modchar">
                                         {% for x in colname %}
                                         <option>{{ x | safe }}</option>
                                         {% endfor %}
                                     </select>
-                                    <label>Char to be replaced</label>
-                                    <input class="form-control" type="text" name="oldchar">
-                                    <label>Replace with</label>
-                                    <input class="form-control" type="text" name="newchar">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Char to be replaced</label>
+                                            <input class="form-control" type="text" name="oldchar">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Replace with</label>
+                                            <input class="form-control" type="text" name="newchar">
+                                        </div>
+                                    </div>
 
                                     <input class="btn btn-primary" type="submit" name = "modcol" value="Modify Char"/>
                                 </div>

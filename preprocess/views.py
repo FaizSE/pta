@@ -27,7 +27,7 @@ def preprocesscsv(request, pk):
         colname = list(data)
         coltype = list(data.dtypes)  # Get list of headers type
         colnametype = np.column_stack((colname, coltype))  # Merge into 2D matrix
-
+        messages.error(request, "Succesful.")
 
     if 'dropna' in request.POST:#Remove empty row
         data = data.dropna(how='all')
@@ -118,4 +118,4 @@ def preprocesscsv(request, pk):
     data_html=data.style.set_table_attributes('class="data_html"').set_properties(**{'border':'1px solid black', 'id':'myTable'}).highlight_null(null_color='yellow').render()
     datadescribe_html=data.describe(include='all').to_html(classes=["table-striped", "table-hover"])
     context = {'loaded_data': data_html, 'pk':pk, 'colname':colname, 'colnametype':colnametype, 'datadescribe_html': datadescribe_html}
-    return render(request, 'preprocess/opencsv.html', context)
+    return render(request, 'preprocess/preprocesscsv.html', context)
